@@ -1,0 +1,66 @@
+{
+	"products": [{
+		"id": 12345,
+		"name": "TV",
+		"category": "Electronics",
+		"manufacturer": "Samsung",
+		"price": "40,500",
+		"quantity": 5,
+		"description": "Some description about the product will come here",
+		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSplxNvQwPDruZTSdiIvt45nJzu3QBSGYo0W3RToX9-MNwjdiGb"
+	}, {
+		"id": 12245,
+		"name": "T-shirt",
+		"category": "Fashion",
+		"manufacturer": "Max",
+		"price": "1,300",
+		"quantity": 32,
+		"description": "Some description about the product will come here",
+		"image": "https://thatshirt.com/wp-content/uploads/2017/08/Fruit-of-the-Loom-3930BR-Youth-Heavy-Cotton-HD-T-Shirt-Aquatic-Blue-front.jpg"
+	}, {
+		"id": 13345,
+		"name": "Table",
+		"category": "Furniture",
+		"manufacturer": "Samarth Enterprise",
+		"price": "20,999",
+		"quantity": 18,
+		"description": "The table with glass top features a beautiful teak finished table.",
+		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqXbWfzRtZJI3mPDHd6T8_IVrsORPevGVtRWWg_mKi0FLCJmrZ"
+	},{
+		"id": 12445,
+		"name": "Bed",
+		"category": "Furniture",
+		"manufacturer": "Forzza Furniture",
+		"price": "30,999",
+		"quantity": 15,
+		"description": "Enjoy deep and blissful sleep with this Forzza King Drawer Bed",
+		"image": "http://pluspng.com/img-png/bedroom-png-hd-modern-reclaimed-wood-platform-bed-modern-beds-grand-rapids-by-woodland-creek-1561.png"
+	},{
+		"id": 12355,
+		"name": "OnePlus 6",
+		"category": "Electronics",
+		"manufacturer": "One plus",
+		"price": "32,500",
+		"quantity": 3,
+		"description": "Some description about the product will come here",
+		"image": "https://cdn.mos.cms.futurecdn.net/A34hrrbFRE5soeqLEQ5aEi-768-80.jpg"
+	},{
+		"id": 11345,
+		"name": "Jeans",
+		"category": "Fashion",
+		"manufacturer": "Pep Jeans",
+		"price": "3,200",
+		"quantity": 27,
+		"description": "Some description about the product will come here",
+		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7S7JdPpd4TVIGkppWzQDF2MfwgmZ357ckVZgg6x5DJ43z7RRfQ"
+	},{
+		"id": 32345,
+		"name": "Laptop",
+		"category": "Electronics",
+		"manufacturer": "Dell",
+		"price": "56,500",
+		"quantity": 15,
+		"description": "Some description about the product will come here",
+		"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSImterz3yvDwajltW_YhXfvHk90MXRTgaW1TTjts0AY_XTkDoG"
+	}]
+}

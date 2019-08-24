@@ -1,0 +1,100 @@
+<div class="action-bar">
+	<mat-form-field class="mr-20">
+   		<input matInput placeholder="Search" [(ngModel)]="filterValue" (ngModelChange)="filterBySearch()">
+	</mat-form-field>
+	<mat-form-field class="mr-20">
+	  <mat-label>Category</mat-label>
+	  <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="filterByCategory($event)">
+	    <mat-option *ngFor="let category of categories" [value]="category">
+	      {{category}}
+	    </mat-option>
+	  </mat-select>
+	</mat-form-field>
+  <mat-form-field *ngIf="!gridView">
+    <mat-label>Customize Fields</mat-label>
+    <mat-select [formControl]="selectedFields" (ngModelChange)="fnSelectedFields()" multiple>
+      <mat-option *ngFor="let field of customizeFields" [value]="field">{{field}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+	<span class="fr">
+		<i class="fa fa-th fa-lg" *ngIf="gridView" (click)="toggleView()" aria-hidden="true"></i>
+		<i class="fa fa-list fa-lg" *ngIf="!gridView" (click)="toggleView()" aria-hidden="true"></i>
+	</span>
+</div>
+
+<mat-grid-list cols="4" *ngIf="gridView">
+  <mat-grid-tile *ngFor="let product of products">
+  	<mat-card>
+  	  <img mat-card-image src="{{product.image}}" alt="">
+      <mat-card-subtitle><strong>{{product.name}}</strong> - {{product.manufacturer}}</mat-card-subtitle>
+  	  <mat-card-subtitle>
+  	    <p>{{product.description || '-'}}</p>
+  	    <p>
+  	       <span class="">&#8377;{{product.price}}</span>
+  	    </p>
+  	  </mat-card-subtitle>
+  	</mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<table *ngIf="!gridView" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Category Column -->
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef> Category </th>
+    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+  </ng-container>
+
+  <!-- Manufacturer Column -->
+  <ng-container matColumnDef="manufacturer">
+    <th mat-header-cell *matHeaderCellDef> Manufacturer </th>
+    <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> &#8377;{{element.price}} </td>
+  </ng-container>
+
+
+  <!-- Quantity Column -->
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+</table>
