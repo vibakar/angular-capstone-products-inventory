@@ -3,28 +3,32 @@ mat-card {
   height: calc(100% - 60px);
 }
 img {
-	height: 150px;
+  height: 150px;
 }
-.fl {
-	float: left;
-}
-.fr {
-	float: right;
-}
-.action-bar {
-	margin: 10px 0px 0px 20px;
-}
-.mr-20 {
-	margin-right: 20px;
-}
-.fa {
-	cursor: pointer;
-	padding: 25px 20px 0px 0px;
+.toggle {
+  cursor: pointer;
 }
 table {
   width: 97%;
   margin: 0 auto;
+  margin-top: 35px;
 }
 mat-card-subtitle {
   color: black;
+}
+mat-button-toggle-group {
+  width: 100%;
+}
+.sidebar {
+  padding-left: 2%;
+  margin-top: 20px;
+}
+.w-100 {
+  width: 100%;
+}
+mat-grid-list {
+  margin-top: 20px;
+}
+.pt-20 {
+  padding-top: 20px;
 }
