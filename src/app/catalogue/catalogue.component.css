@@ -32,3 +32,17 @@ mat-grid-list {
 .pt-20 {
   padding-top: 20px;
 }
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+mat-button-toggle-group {
+  border: none;
+}
+.add-product-btn {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}

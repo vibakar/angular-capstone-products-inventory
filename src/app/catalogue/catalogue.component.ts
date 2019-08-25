@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import { ProductsService } from '../services/products.service';
 import { FormControl } from '@angular/forms';
+
+import { ProductsService } from '../services/products.service';
+import { AuthService } from '../services/auth.service';
 
 export interface Product {
   name: string;
@@ -18,6 +20,7 @@ export interface Product {
   styleUrls: ['./catalogue.component.css']
 })
 export class CatalogueComponent implements OnInit {
+  isLoggedIn:boolean = false;
   gridView:boolean = true;
   products: Product[];
   productsCopy: Product[];
@@ -30,15 +33,30 @@ export class CatalogueComponent implements OnInit {
   dataSource = new MatTableDataSource<Product>(this.products);
   selection = new SelectionModel<Product>(true, []);
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService, private authService: AuthService) {
     this.getAllProducts();
   }
 
   ngOnInit() {
+    this.setView();
+    this.isLoggedIn = this.authService.isLoggedIn();
+    if(this.isLoggedIn) {
+      this.displayedColumns.push('edit', 'delete');
+    }
+  }
+
+  setView() {
+    let view = localStorage.getItem('view');
+    if(view) {
+      this.gridView = (view == 'grid') ? true : false;
+    } else {
+      localStorage.setItem('view', 'grid');
+    }
   }
 
   toggleView() {
     this.gridView = !this.gridView;
+    localStorage.setItem('view', this.gridView ? 'grid' : 'list');
   }
 
   getAllProducts() {
@@ -68,12 +86,14 @@ export class CatalogueComponent implements OnInit {
   }
 
   fnSelectedFields = () => {
-      console.log('----', this.selectedFields.value)
       let defaultFields = ['select', 'name'];
       this.selectedFields.value.forEach((field) => {
         defaultFields.push(field.charAt(0).toLowerCase()+field.slice(1));
       });
       this.displayedColumns = defaultFields;
+      if(this.isLoggedIn) {
+        this.displayedColumns.push('edit', 'delete');
+      }
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
