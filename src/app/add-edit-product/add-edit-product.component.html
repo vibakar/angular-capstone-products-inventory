@@ -1,1 +1,34 @@
-<p>add-edit-product works!</p>
+
+<div   class="mat-elevation-z8 page">
+
+        <h3 class = "title">Add Product</h3>
+        <form class="example-form" (ngSubmit)="addProduct(name.value,manufacturer.value,price.value,quantity.value,selected);
+        name.value='';quantity.value='';manufacturer.value='';price.value='';selected=''">
+                &nbsp; <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Product name" #name class="form-control" required >
+                </mat-form-field>
+                &nbsp;  &nbsp;  &nbsp;
+                <mat-form-field>
+                        <mat-label>Select an option</mat-label>
+                            <mat-select [(value)]="selected" required>
+                                <mat-option>None</mat-option>
+                                <mat-option value="Electronics">Electronics</mat-option>
+                                <mat-option value="Fashion">Fashion</mat-option>
+                                <mat-option value="Furniture">Furniture</mat-option>
+                            </mat-select>
+                      </mat-form-field>
+                      
+                      &nbsp; <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Manufacturer" #manufacturer required>
+                            </mat-form-field>
+                          &nbsp; <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Price"  #price required>
+                                </mat-form-field>
+                              &nbsp; <mat-form-field class="example-full-width">
+                                         <input matInput placeholder="Quantity"  #quantity required>
+                                     </mat-form-field>
+                          <button type = "submit" [routerLink]="['']" class="add-product-btn" mat-stroked-button color="primary" 
+                         >
+                          Add Product</button>&nbsp;
+              </form>
+</div>
