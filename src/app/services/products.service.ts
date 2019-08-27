@@ -21,4 +21,8 @@ export class ProductsService {
   updateProduct(payload) {
     return this.http.put(this.configUrl + "/products/" + payload.id, payload);
   }
+
+  deleteProduct(id) {
+    return this.http.delete(this.configUrl + "/products/" + id);
+  }
 }

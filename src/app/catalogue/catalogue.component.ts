@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FormControl } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { DeleteModelComponent } from '../delete-model/delete-model.component';
 import { ProductsService } from '../services/products.service';
 import { AuthService } from '../services/auth.service';
 import { Product } from '../models/Product';
@@ -26,7 +29,7 @@ export class CatalogueComponent implements OnInit {
   dataSource = new MatTableDataSource<Product>(this.products);
   selection = new SelectionModel<Product>(true, []);
 
-  constructor(private productsService: ProductsService, private authService: AuthService) {
+  constructor(private productsService: ProductsService, private authService: AuthService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.getAllProducts();
   }
 
@@ -88,6 +91,23 @@ export class CatalogueComponent implements OnInit {
       if(this.isLoggedIn) {
         this.displayedColumns.push('edit', 'delete');
       }
+  }
+
+  openDeleteDialog(row): void {
+    const dialogRef = this.dialog.open(DeleteModelComponent, {
+      width: '350px',
+      height: '150px',
+      data: row.name
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result == 'yes') {
+        this.productsService.deleteProduct(row.id).subscribe(()=> {
+          this.getAllProducts();
+          this.snackBar.open(`Product "${row.name}" deleted sucessfully!`, 'Close', {duration: 3000});
+        });
+      }
+    });
   }
 
   /** Whether the number of selected elements matches the total number of rows. */

@@ -69,36 +69,6 @@
       "quantity": 15,
       "description": "Some description about the product will come here",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSImterz3yvDwajltW_YhXfvHk90MXRTgaW1TTjts0AY_XTkDoG"
-    },
-    {
-      "name": "samsung m30",
-      "category": "Electronics",
-      "manufacturer": "samsung",
-      "description": "newly launched",
-      "image": "https://www.bing.com/th?id=OIP.B5sU6ke0TaTm95R8_tI8yQHaEQ&pid=Api&rs=1",
-      "price": 13000,
-      "quantity": "1",
-      "id": 32346
-    },
-    {
-      "name": "oneplus 7 pro",
-      "category": "Electronics",
-      "manufacturer": "oneplus",
-      "price": 49999,
-      "quantity": 1,
-      "description": "launched in june",
-      "image": "https://cdn.hiptoro.com/wp-content/uploads/2019/05/OnePlus-7-Pro-specs-price-buy.jpg",
-      "id": 32347
-    },
-    {
-      "name": "Oneplus Tv",
-      "category": "Electronics",
-      "manufacturer": "oneplus",
-      "price": 45000,
-      "quantity": 1,
-      "description": "wqeqe",
-      "image": "https://www.xda-developers.com/files/2018/09/oneplus-tv.jpeg",
-      "id": 32348
     }
   ]
 }

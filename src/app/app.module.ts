@@ -15,7 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { ProductsService } from './services/products.service';
 import { AuthService } from './services/auth.service';
 import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { DeleteModelComponent } from './delete-model/delete-model.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     HeaderComponent,
     CatalogueComponent,
     AddEditProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    DeleteModelComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +54,11 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     MatCheckboxModule,
     MatButtonToggleModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
-  providers: [ProductsService, AuthService],
+  providers: [ ProductsService, AuthService ],
+  entryComponents: [ DeleteModelComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
