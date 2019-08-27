@@ -13,4 +13,12 @@ export class ProductsService {
   addProduct(payload) {
     return this.http.post(this.configUrl + "/products", payload)
   }
+
+  getProductById(id) {
+    return this.http.get(this.configUrl + "/products/" + id);
+  }
+
+  updateProduct(payload) {
+    return this.http.put(this.configUrl + "/products/" + payload.id, payload);
+  }
 }

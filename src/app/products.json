@@ -4,9 +4,9 @@
       "id": 12345,
       "name": "TV",
       "category": "Electronics",
-      "manufacturer": "Samsung",
-      "price": "40,500",
-      "quantity": 5,
+      "manufacturer": "SONY",
+      "price": 35000,
+      "quantity": 2,
       "description": "Some description about the product will come here",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSplxNvQwPDruZTSdiIvt45nJzu3QBSGYo0W3RToX9-MNwjdiGb"
     },
@@ -15,7 +15,7 @@
       "name": "T-shirt",
       "category": "Fashion",
       "manufacturer": "Max",
-      "price": "1,300",
+      "price": 1300,
       "quantity": 32,
       "description": "Some description about the product will come here",
       "image": "https://thatshirt.com/wp-content/uploads/2017/08/Fruit-of-the-Loom-3930BR-Youth-Heavy-Cotton-HD-T-Shirt-Aquatic-Blue-front.jpg"
@@ -25,7 +25,7 @@
       "name": "Table",
       "category": "Furniture",
       "manufacturer": "Samarth Enterprise",
-      "price": "20,999",
+      "price": 20999,
       "quantity": 18,
       "description": "The table with glass top features a beautiful teak finished table.",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqXbWfzRtZJI3mPDHd6T8_IVrsORPevGVtRWWg_mKi0FLCJmrZ"
@@ -35,7 +35,7 @@
       "name": "Bed",
       "category": "Furniture",
       "manufacturer": "Forzza Furniture",
-      "price": "30,999",
+      "price": 30500,
       "quantity": 15,
       "description": "Enjoy deep and blissful sleep with this Forzza King Drawer Bed",
       "image": "http://pluspng.com/img-png/bedroom-png-hd-modern-reclaimed-wood-platform-bed-modern-beds-grand-rapids-by-woodland-creek-1561.png"
@@ -45,7 +45,7 @@
       "name": "OnePlus 6",
       "category": "Electronics",
       "manufacturer": "One plus",
-      "price": "32,500",
+      "price": 32500,
       "quantity": 3,
       "description": "Some description about the product will come here",
       "image": "https://cdn.mos.cms.futurecdn.net/A34hrrbFRE5soeqLEQ5aEi-768-80.jpg"
@@ -55,7 +55,7 @@
       "name": "Jeans",
       "category": "Fashion",
       "manufacturer": "Pep Jeans",
-      "price": "3,200",
+      "price": 3200,
       "quantity": 27,
       "description": "Some description about the product will come here",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7S7JdPpd4TVIGkppWzQDF2MfwgmZ357ckVZgg6x5DJ43z7RRfQ"
@@ -65,7 +65,7 @@
       "name": "Laptop",
       "category": "Electronics",
       "manufacturer": "Dell",
-      "price": "56,500",
+      "price": 56500,
       "quantity": 15,
       "description": "Some description about the product will come here",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSImterz3yvDwajltW_YhXfvHk90MXRTgaW1TTjts0AY_XTkDoG"
@@ -76,7 +76,7 @@
       "manufacturer": "samsung",
       "description": "newly launched",
       "image": "https://www.bing.com/th?id=OIP.B5sU6ke0TaTm95R8_tI8yQHaEQ&pid=Api&rs=1",
-      "price": "13000",
+      "price": 13000,
       "quantity": "1",
       "id": 32346
     },
@@ -84,7 +84,7 @@
       "name": "oneplus 7 pro",
       "category": "Electronics",
       "manufacturer": "oneplus",
-      "price": "49999",
+      "price": 49999,
       "quantity": 1,
       "description": "launched in june",
       "image": "https://cdn.hiptoro.com/wp-content/uploads/2019/05/OnePlus-7-Pro-specs-price-buy.jpg",
@@ -94,7 +94,7 @@
       "name": "Oneplus Tv",
       "category": "Electronics",
       "manufacturer": "oneplus",
-      "price": "45000",
+      "price": 45000,
       "quantity": 1,
       "description": "wqeqe",
       "image": "https://www.xda-developers.com/files/2018/09/oneplus-tv.jpeg",
