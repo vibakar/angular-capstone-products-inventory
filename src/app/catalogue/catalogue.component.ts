@@ -77,6 +77,7 @@ export class CatalogueComponent implements OnInit {
   }
 
   filterByCategory = (value) => {
+    this.selectedCategory = value;
     if(value == 'All') {
       this.products = this.filterValue ? this.productsCopy.filter((data) => data.name.toLowerCase().indexOf(this.filterValue.toLowerCase()) >= 0): this.productsCopy;
     } else {
