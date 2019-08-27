@@ -1,55 +1,57 @@
 <div class="mat-elevation-z8 page">
-  <h3 class = "title">Add Product</h3>
+  <h3 class="title">Add Product</h3>
   <form class="product-form" #productForm="ngForm">
-     <mat-form-field >
+     <mat-form-field>
       <input matInput placeholder="Product Name" #name="ngModel" name="name" minlength="2" maxlength="20" [(ngModel)]="product.name" class="form-control" required >
     </mat-form-field>
     <mat-error *ngIf="name.touched && name.invalid">
-      <span  *ngIf="name.errors.required">Name is required</span>
+      <span *ngIf="name.errors.required">Name is required</span>
       <span *ngIf="name.errors.minlength">Name should contain min 2 characters</span>
       <span *ngIf="name.errors.maxlength">Name cannot exceed 20 characters</span>
     </mat-error>
+
     <mat-form-field>
       <mat-label>Select Category</mat-label>
-        <mat-select [(value)]="category"  #categories="ngModel" name="category"  [(ngModel)]="product.category" required>
+        <mat-select [(value)]="category" #categories="ngModel" name="category" [(ngModel)]="product.category" required>
           <mat-option value="Electronics">Electronics</mat-option>
           <mat-option value="Fashion">Fashion</mat-option>
           <mat-option value="Furniture">Furniture</mat-option>
         </mat-select>
     </mat-form-field>
-    <mat-error *ngIf = "categories.touched && categories.invalid">
-      <span  *ngIf="categories.errors.required">Category is required</span>
+    <mat-error *ngIf="categories.touched && categories.invalid">
+      <span *ngIf="categories.errors.required">Category is required</span>
     </mat-error>
                       
     <mat-form-field>
       <input matInput placeholder="Manufacturer" name="manufacturer" #manufacturer="ngModel" [(ngModel)]="product.manufacturer" required>
     </mat-form-field>
-    <mat-error *ngIf = "manufacturer.touched && manufacturer.invalid">
-      <span  *ngIf="manufacturer.errors.required">Manufacturer is required</span>
+    <mat-error *ngIf="manufacturer.touched && manufacturer.invalid">
+      <span *ngIf="manufacturer.errors.required">Manufacturer is required</span>
     </mat-error>
            
-
     <mat-form-field>
-      <textarea matInput placeholder="Description" name="description" [(ngModel)]="product.description"  ></textarea>
+      <textarea matInput placeholder="Description" name="description" [(ngModel)]="product.description"></textarea>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput placeholder="Image URL" name="image" #image="ngModel" [(ngModel)]="product.image" required>
     </mat-form-field>
-    <mat-error *ngIf = "image.touched && image.invalid">
-      <span  *ngIf="image.errors.required">Image URL is required</span>
+    <mat-error *ngIf="image.touched && image.invalid">
+      <span *ngIf="image.errors.required">Image URL is required</span>
     </mat-error>
+
     <mat-form-field>
       <input matInput type="number" placeholder="Price" name="price" #price="ngModel" [(ngModel)]="product.price" min="1" required>
     </mat-form-field>
-    <mat-error *ngIf = "price.touched && price.invalid">
-      <span  *ngIf="price.errors.required">Price is required</span>
-    </mat-error>       
+    <mat-error *ngIf="price.touched && price.invalid">
+      <span *ngIf="price.errors.required">Price is required</span>
+    </mat-error>
+
     <mat-form-field>
        <input matInput type="number" placeholder="Quantity" name="quantity" #quantity="ngModel" [(ngModel)]="product.quantity" min="0" required>
     </mat-form-field>
-    <mat-error *ngIf = "quantity.touched && quantity.invalid">
-      <span  *ngIf="quantity.errors.required">Quantity is required</span>
+    <mat-error *ngIf="quantity.touched && quantity.invalid">
+      <span *ngIf="quantity.errors.required">Quantity is required</span>
     </mat-error>   
     
     <button type="submit" class="add-product-btn submitBtn" mat-stroked-button color="primary" [disabled]="productForm.invalid ? true :false" (click)="addProduct()">Add Product</button>
