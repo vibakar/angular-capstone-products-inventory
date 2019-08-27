@@ -6,25 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-edit-product.component.css']
 })
 export class AddEditProductComponent implements OnInit {
-  products: any[]=[]
   constructor() { }
 
   ngOnInit() {
   }
-  addProduct = (product,manufacturer,price,quantity,selected) =>{
-    console.log(product,manufacturer,price,quantity,selected,"getting value")
-    this.products.push({product,selected,manufacturer,price,quantity})
-    
+  addProduct = (data) =>{
+    console.log(data.value, "getting value")
   }
-
-
 }
 
-
 export interface products {
-  product:string,
-  manufacturer:string,
-  price:number,
-  quantity:number,
-  selected:string
+  product:string;
+  category:string;
+  manufacturer:string;
+  descripiton: string;
+  imageUrl: string;
+  price:number;
+  quantity:number;
 }
