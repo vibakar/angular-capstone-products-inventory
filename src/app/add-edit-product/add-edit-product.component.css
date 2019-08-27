@@ -3,7 +3,7 @@
     width: 40%;
     margin-left: 30%;
 }
-.example-form{
+.product-form{
     display: grid;
     width: 70%;
     margin-left: 15%;
@@ -11,4 +11,7 @@
 .title{
     text-align: center;
     padding-top: 20px;
+}
+.submitBtn{
+    margin-bottom: 15px;
 }

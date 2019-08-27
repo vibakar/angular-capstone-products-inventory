@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { ProductsService } from '../services/products.service'
 
 @Component({
   selector: 'app-add-edit-product',
@@ -6,21 +10,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-edit-product.component.css']
 })
 export class AddEditProductComponent implements OnInit {
-  constructor() { }
-
+ 
+  constructor(private router: Router, private productsService: ProductsService, private snackBar: MatSnackBar) { }
+  product={
+      "name": "",
+      "category": "",
+      "manufacturer": "",
+      "price": null,
+      "quantity": null,
+      "description": "",
+      "image":""
+  }
   ngOnInit() {
   }
-  addProduct = (data) =>{
-    console.log(data.value, "getting value")
-  }
-}
 
-export interface products {
-  product:string;
-  category:string;
-  manufacturer:string;
-  descripiton: string;
-  imageUrl: string;
-  price:number;
-  quantity:number;
+  addProduct = () =>{
+    console.log(this.product)
+    this.productsService.addProduct(this.product).subscribe(data => {
+      this.router.navigate(['/']);
+      this.snackBar.open(`Product "${this.product.name}" added sucessfully!`, 'Close', {
+        duration: 3000
+      });
+    })
+  }
 }
