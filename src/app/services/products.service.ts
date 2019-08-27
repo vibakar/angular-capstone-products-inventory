@@ -9,4 +9,8 @@ export class ProductsService {
   getProducts() {
   	return this.http.get(this.configUrl + "/products");
   }
+
+  addProduct(payload) {
+    return this.http.post(this.configUrl + "/products", payload)
+  }
 }

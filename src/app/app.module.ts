@@ -14,6 +14,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,7 +51,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     MatTableModule,
     MatCheckboxModule,
     MatButtonToggleModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [ProductsService, AuthService],
   bootstrap: [AppComponent]

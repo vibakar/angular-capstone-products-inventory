@@ -1,1 +1,39 @@
-<p>add-edit-product works!</p>
+<div class="mat-elevation-z8 page">
+  <h3 class = "title">Add Product</h3>
+  <form class="product-form" #productForm="ngForm">
+     <mat-form-field >
+      <input matInput placeholder="Product Name" name="name" [(ngModel)]="product.name" class="form-control" required >
+    </mat-form-field>
+                    
+    <mat-form-field>
+      <mat-label>Select Category</mat-label>
+        <mat-select [(value)]="category" name="category" [(ngModel)]="product.category" required>
+          <mat-option value="Electronics">Electronics</mat-option>
+          <mat-option value="Fashion">Fashion</mat-option>
+          <mat-option value="Furniture">Furniture</mat-option>
+        </mat-select>
+    </mat-form-field>
+                      
+    <mat-form-field>
+      <input matInput placeholder="Manufacturer" name="manufacturer" [(ngModel)]="product.manufacturer" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Description" name="description" [(ngModel)]="product.description"  ></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Image URL" name="image" [(ngModel)]="product.image" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Price" name="price" [(ngModel)]="product.price" required>
+    </mat-form-field>
+             
+    <mat-form-field>
+       <input matInput type="number" placeholder="Quantity" name="quantity" [(ngModel)]="product.quantity" required>
+    </mat-form-field>
+    
+    <button type="submit" class="add-product-btn submitBtn" mat-stroked-button color="primary" [disabled]="productForm.invalid ? true :false" (click)="addProduct()">Add Product</button>
+</form>
+</div>
