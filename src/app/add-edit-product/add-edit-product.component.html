@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8 page">
-  <h3 class="title">Add Product</h3>
+  <h3 class="title">{{productId ? 'Update Product' : 'Add Product'}}</h3>
   <form class="product-form" #productForm="ngForm">
      <mat-form-field>
       <input matInput placeholder="Product Name" #name="ngModel" name="name" minlength="2" maxlength="20" [(ngModel)]="product.name" class="form-control" required >
@@ -54,6 +54,7 @@
       <span *ngIf="quantity.errors.required">Quantity is required</span>
     </mat-error>   
     
-    <button type="submit" class="add-product-btn submitBtn" mat-stroked-button color="primary" [disabled]="productForm.invalid ? true :false" (click)="addProduct()">Add Product</button>
+    <button type="submit" *ngIf="!productId" class="add-product-btn submitBtn" mat-stroked-button color="primary" [disabled]="productForm.invalid ? true :false" (click)="addProduct()">Add Product</button>
+    <button type="submit" *ngIf="productId" class="add-product-btn submitBtn" mat-stroked-button color="primary" [disabled]="productForm.invalid ? true :false" (click)="updateProduct()">Update Product</button>
 </form>
 </div>

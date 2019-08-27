@@ -5,14 +5,7 @@ import { FormControl } from '@angular/forms';
 
 import { ProductsService } from '../services/products.service';
 import { AuthService } from '../services/auth.service';
-
-export interface Product {
-  name: string;
-  category: string;
-  manufacturer: string;
-  price: string;
-  quantity: number;
-}
+import { Product } from '../models/Product';
 
 @Component({
   selector: 'catalogue',
