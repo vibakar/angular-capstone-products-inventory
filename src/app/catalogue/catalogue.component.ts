@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { SelectionModel } from '@angular/cdk/collections';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -27,7 +26,6 @@ export class CatalogueComponent implements OnInit {
   customizeFields: string[] = ['Category', 'Manufacturer', 'Description', 'Price', 'Quantity'];
   displayedColumns: string[] = ['select', 'name', 'category', 'manufacturer', 'price'];
   dataSource = new MatTableDataSource<Product>(this.products);
-  selection = new SelectionModel<Product>(true, []);
 
   constructor(private productsService: ProductsService, private authService: AuthService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.getAllProducts();
@@ -93,7 +91,7 @@ export class CatalogueComponent implements OnInit {
       }
   }
 
-  openDeleteDialog(row): void {
+  openDeleteDialog = (row) => {
     const dialogRef = this.dialog.open(DeleteModelComponent, {
       width: '350px',
       height: '150px',
@@ -110,25 +108,4 @@ export class CatalogueComponent implements OnInit {
     });
   }
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Product): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row`;
-  }
 }

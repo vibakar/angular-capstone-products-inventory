@@ -1,0 +1,19 @@
+mat-card {
+  width: calc(100% - 70px);
+  height: calc(100% - 60px);
+}
+img {
+  height: 150px;
+}
+mat-card-subtitle {
+  color: black;
+}
+mat-grid-list {
+  margin-top: 20px;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}

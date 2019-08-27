@@ -1,20 +1,5 @@
-mat-card {
-  width: calc(100% - 70px);
-  height: calc(100% - 60px);
-}
-img {
-  height: 150px;
-}
 .toggle {
   cursor: pointer;
-}
-table {
-  width: 97%;
-  margin: 0 auto;
-  margin-top: 35px;
-}
-mat-card-subtitle {
-  color: black;
 }
 mat-button-toggle-group {
   width: 100%;
@@ -26,23 +11,17 @@ mat-button-toggle-group {
 .w-100 {
   width: 100%;
 }
-mat-grid-list {
-  margin-top: 20px;
-}
 .pt-20 {
   padding-top: 20px;
-}
-.fl {
-  float: left;
-}
-.fr {
-  float: right;
 }
 mat-button-toggle-group {
   border: none;
 }
-.add-product-btn {
+.add-product-btn, .del-product-btn {
   width: 100%;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+.fa-trash-o {
+  margin-bottom: 5px;
 }

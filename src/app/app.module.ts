@@ -26,6 +26,8 @@ import { AuthService } from './services/auth.service';
 import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { DeleteModelComponent } from './delete-model/delete-model.component';
+import { CatalogueCardsComponent } from './catalogue-cards/catalogue-cards.component';
+import { CatalogueTableComponent } from './catalogue-table/catalogue-table.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { DeleteModelComponent } from './delete-model/delete-model.component';
     CatalogueComponent,
     AddEditProductComponent,
     ProductDetailsComponent,
-    DeleteModelComponent
+    DeleteModelComponent,
+    CatalogueCardsComponent,
+    CatalogueTableComponent
   ],
   imports: [
     BrowserModule,

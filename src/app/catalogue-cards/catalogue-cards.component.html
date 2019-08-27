@@ -1,0 +1,24 @@
+<mat-grid-list cols="3">
+  <mat-grid-tile *ngFor="let product of products">
+    <mat-card>
+      <a [routerLink]="['product-detail', product.id]">
+        <img mat-card-image src="{{product.image}}" alt="{{product.name}}">
+      </a>
+      <mat-card-subtitle><strong>{{product.name}}</strong> - {{product.manufacturer}}</mat-card-subtitle>
+      <mat-card-subtitle>
+        <p>{{product.description || '-'}}</p>
+        <p>
+           <span>&#8377;{{product.price}}</span>
+        </p>
+      </mat-card-subtitle>
+      <p *ngIf="isLoggedIn">
+        <button [routerLink]="['edit-product', product.id]" mat-button class="fl" color="accent">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </button>
+        <button mat-button class="fr" color="warn" (click)="openDelDialog(product)">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      </p>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
