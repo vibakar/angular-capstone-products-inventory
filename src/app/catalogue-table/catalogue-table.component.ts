@@ -14,7 +14,7 @@ export class CatalogueTableComponent implements OnInit {
   @Input() displayedColumns;
   selection = new SelectionModel<Product>(true, []);
   @Output() openDeleteDialog = new EventEmitter();
- 
+  @Output() selectedRows = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -24,8 +24,12 @@ export class CatalogueTableComponent implements OnInit {
   	this.openDeleteDialog.emit(row);
   }
 
+  clearSelection() {
+    this.selection.clear();
+  }
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
+  this.selectedRows.emit(this.selection.selected)
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
@@ -36,6 +40,7 @@ export class CatalogueTableComponent implements OnInit {
     this.isAllSelected() ?
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
+        this.selectedRows.emit(this.selection.selected)
   }
 
   /** The label for the checkbox on the passed row */

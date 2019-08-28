@@ -1,3 +1,4 @@
+<p *ngIf="!data">Are you sure to delete selected products?</p>
 <p *ngIf="data">Are you sure to delete "{{data}}"?</p>
 <button mat-button (click)="action('yes')">Ok</button>
 <button mat-button color="primary" cdkFocusInitial (click)="action('no')">Cancel</button>

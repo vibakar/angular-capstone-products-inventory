@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { forkJoin } from 'rxjs'; 
 
 @Injectable()
 export class ProductsService {
-  configUrl = "http://localhost:3000"
+  configUrl = "http://localhost:3001"
   constructor(private http: HttpClient) { }
 
   getProducts() {
@@ -24,5 +25,10 @@ export class ProductsService {
 
   deleteProduct(id) {
     return this.http.delete(this.configUrl + "/products/" + id);
+  }
+
+  deleteMulProduct(ids) {
+    let requests = ids.map(id => this.deleteProduct(id));
+    return forkJoin(requests);
   }
 }

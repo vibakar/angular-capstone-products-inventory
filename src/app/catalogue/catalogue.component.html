@@ -13,7 +13,7 @@
         <i class="fa fa-plus" aria-hidden="true"></i>
         Add Product
       </button>
-      <button *ngIf="!gridView" class="del-product-btn" mat-stroked-button color="warn">
+      <button *ngIf="!gridView" class="del-product-btn" mat-stroked-button color="warn" (click)="openMulDelDialog()" [disabled]="selectedIds.length == 0 ? true : false">
         <i class="fa fa-trash-o" aria-hidden="true"></i>
         Delete Product
       </button>
@@ -41,6 +41,6 @@
   <div class="content" fxFlex>
     <catalogue-cards *ngIf="gridView" [isLoggedIn]="isLoggedIn" [products]="products" (openDeleteDialog)="openDeleteDialog($event)"></catalogue-cards>
 
-    <catalogue-table *ngIf="!gridView" [isLoggedIn]="isLoggedIn" [dataSource]="dataSource" [displayedColumns]="displayedColumns" (openDeleteDialog)="openDeleteDialog($event)"></catalogue-table>
+    <catalogue-table *ngIf="!gridView" [isLoggedIn]="isLoggedIn" [dataSource]="dataSource" [displayedColumns]="displayedColumns" (openDeleteDialog)="openDeleteDialog($event)" (selectedRows)="selectedRows($event)"></catalogue-table>
   </div>
 </div>

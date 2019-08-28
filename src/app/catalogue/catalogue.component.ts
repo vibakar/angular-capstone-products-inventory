@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { DeleteModelComponent } from '../delete-model/delete-model.component';
+import { CatalogueTableComponent } from '../catalogue-table/catalogue-table.component';
 import { ProductsService } from '../services/products.service';
 import { AuthService } from '../services/auth.service';
 import { Product } from '../models/Product';
@@ -15,6 +16,7 @@ import { Product } from '../models/Product';
   styleUrls: ['./catalogue.component.css']
 })
 export class CatalogueComponent implements OnInit {
+  @ViewChild(CatalogueTableComponent, {static: false}) child: CatalogueTableComponent;
   isLoggedIn:boolean = false;
   gridView:boolean = true;
   products: Product[];
@@ -26,6 +28,7 @@ export class CatalogueComponent implements OnInit {
   customizeFields: string[] = ['Category', 'Manufacturer', 'Description', 'Price', 'Quantity'];
   displayedColumns: string[] = ['select', 'name', 'category', 'manufacturer', 'price'];
   dataSource = new MatTableDataSource<Product>(this.products);
+  selectedIds:number[] = [];
 
   constructor(private productsService: ProductsService, private authService: AuthService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.getAllProducts();
@@ -108,4 +111,26 @@ export class CatalogueComponent implements OnInit {
     });
   }
 
+  openMulDelDialog = () => {
+    const mulDelDialogRef = this.dialog.open(DeleteModelComponent, {
+      width: '350px',
+      height: '150px'
+    });
+
+    mulDelDialogRef.afterClosed().subscribe(result => {
+      if(result == 'yes') {
+        this.productsService.deleteMulProduct(this.selectedIds).subscribe(()=> {
+          setTimeout(()=> {
+            this.getAllProducts();
+            this.child.clearSelection();
+            this.snackBar.open(`All the selected products deleted sucessfully!`, 'Close', {duration: 3000});
+          }, 2000);
+        });
+      }
+    });
+  }
+
+  selectedRows = (data) => {
+    this.selectedIds = data.map((product) => product.id);
+  }
 }
