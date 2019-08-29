@@ -11,16 +11,6 @@
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSplxNvQwPDruZTSdiIvt45nJzu3QBSGYo0W3RToX9-MNwjdiGb"
     },
     {
-      "id": 12245,
-      "name": "T-shirt",
-      "category": "Fashion",
-      "manufacturer": "Max",
-      "price": 1300,
-      "quantity": 32,
-      "description": "Some description about the product will come here",
-      "image": "https://thatshirt.com/wp-content/uploads/2017/08/Fruit-of-the-Loom-3930BR-Youth-Heavy-Cotton-HD-T-Shirt-Aquatic-Blue-front.jpg"
-    },
-    {
       "id": 13345,
       "name": "Table",
       "category": "Furniture",
@@ -69,6 +59,16 @@
       "quantity": 15,
       "description": "Some description about the product will come here",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSImterz3yvDwajltW_YhXfvHk90MXRTgaW1TTjts0AY_XTkDoG"
+    },
+    {
+      "name": "Oneplus 7 pro",
+      "category": "Electronics",
+      "manufacturer": "oneplus",
+      "price": 49999,
+      "quantity": 1,
+      "description": "Newly launched device which has curved display with 6.67 inches and also with 8GB RAM and 128GB ROM.\nIt has triple camera at the back side.",
+      "image": "https://cdn.hiptoro.com/wp-content/uploads/2019/05/OnePlus-7-Pro-specs-price-buy.jpg",
+      "id": 32346
     }
   ]
 }

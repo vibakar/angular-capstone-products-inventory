@@ -17,3 +17,6 @@ mat-grid-list {
 .fr {
   float: right;
 }
+.product-card{
+  overflow: hidden;
+}

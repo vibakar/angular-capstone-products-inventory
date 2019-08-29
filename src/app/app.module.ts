@@ -16,6 +16,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -59,7 +60,8 @@ import { CatalogueTableComponent } from './catalogue-table/catalogue-table.compo
     MatButtonToggleModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [ ProductsService, AuthService ],
   entryComponents: [ DeleteModelComponent ],

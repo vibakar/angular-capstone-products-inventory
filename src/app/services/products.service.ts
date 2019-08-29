@@ -4,7 +4,7 @@ import { forkJoin } from 'rxjs';
 
 @Injectable()
 export class ProductsService {
-  configUrl = "http://localhost:3001"
+  configUrl = "http://localhost:3000"
   constructor(private http: HttpClient) { }
 
   getProducts() {
