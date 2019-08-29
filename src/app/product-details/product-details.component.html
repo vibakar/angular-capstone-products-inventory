@@ -1,1 +1,64 @@
-<p>product-details works!</p>
+
+<div class="product-body">
+    <img mat-card-image class="mat-card-image" src="{{product.image}}" >
+    <div class="mat-elevation-z8 product-detail">
+        <h3 class="product-title">Product details</h3>
+        <p>
+           <label class="product-label">
+               Product Name:
+           </label>
+           <span class="product-value">
+                {{product.name}}
+             </span>
+        </p>
+        <mat-divider></mat-divider>
+
+        <p>
+            <label class="product-label">
+                Manufacturer:
+            </label>
+            <span class="product-value">
+                {{product.manufacturer}}
+            </span>
+        </p>
+         <mat-divider></mat-divider>
+             
+         <p>
+            <label class="product-label">
+                Price:
+            </label>
+            <span class="product-value">
+                {{product.price}}
+            </span>
+        </p>
+        <mat-divider></mat-divider>
+        
+        <p>
+            <label class="product-label">
+                Quantity:
+            </label>
+            <span class="product-value">
+                {{product.quantity}}
+            </span>
+        </p>
+        <mat-divider></mat-divider>
+    
+        <p>
+            <mat-grid-list cols="2" rowHeight="2:1">
+                <mat-grid-tile class="description">
+                    <label class="product-des">
+                        Description:
+                    </label>
+                </mat-grid-tile>
+                <mat-grid-tile class="product-description">
+                    <span >
+                        {{product.description}}
+                    </span>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </p>
+            <mat-divider></mat-divider>
+            <button type="button" class="add-product-btn backBtn" mat-stroked-button color="primary" (click)="back()">Back</button>
+    
+    </div>
+</div>

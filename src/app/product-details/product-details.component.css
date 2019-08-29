@@ -1,0 +1,49 @@
+.mat-card-image{
+    width: 40%;
+    height: 400px;
+    margin-left: 20px;
+    margin-top: 25px;
+    padding-top: 20px;
+
+}
+.product-title{
+    text-align: center;
+    color:darkcyan
+}
+.product-body{
+    display: flex;
+    margin-top: 25px;
+}
+.product-detail{
+    margin-left: 100px;
+    width: 400px;
+}
+.product-label{
+    color:grey;
+    width: 100px;
+    float: left;
+    padding-left: 15px;
+}
+.product-value{
+    margin-left: 20px;
+}
+.product-description{
+    margin-left: -15%;
+    width: 60%!important;
+}
+.product-des{
+    margin-right: 100px;
+    color:grey;
+    width: 100px;
+    float: left;
+}
+.backBtn{
+    height: 40px;
+    margin-left: 70%;
+    width: 25%;
+    margin-top: 10px;
+    margin-bottom: 13px;
+}
+.description{
+    padding-left: 40px;
+}
