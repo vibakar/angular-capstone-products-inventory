@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 
-import { Product } from '../models/Product';
+import { Product } from '../../models/Product';
 
 @Component({
   selector: 'catalogue-table',

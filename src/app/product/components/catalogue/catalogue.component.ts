@@ -6,9 +6,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { DeleteModelComponent } from '../delete-model/delete-model.component';
 import { CatalogueTableComponent } from '../catalogue-table/catalogue-table.component';
-import { ProductsService } from '../services/products.service';
-import { AuthService } from '../services/auth.service';
-import { Product } from '../models/Product';
+import { ProductsService } from '../../services/products.service';
+import { AuthService } from '../../services/auth.service';
+import { Product } from '../../models/Product';
 
 @Component({
   selector: 'catalogue',
@@ -124,7 +124,7 @@ export class CatalogueComponent implements OnInit {
             this.getAllProducts();
             this.child.clearSelection();
             this.snackBar.open(`All the selected products deleted sucessfully!`, 'Close', {duration: 3000});
-          }, 2000);
+          }, 1000);
         });
       }
     });

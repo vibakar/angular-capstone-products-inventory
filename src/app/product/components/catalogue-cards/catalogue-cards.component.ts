@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Product } from '../models/Product';
+import { Product } from '../../models/Product';
 
 @Component({
   selector: 'catalogue-cards',
