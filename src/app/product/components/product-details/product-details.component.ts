@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Product } from '../../models/Product';
 import { ProductsService } from '../../services/products.service'
@@ -11,7 +12,7 @@ import { ProductsService } from '../../services/products.service'
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private router: Router,private route: ActivatedRoute, private productsService: ProductsService) { }
+  constructor(private router: Router,private route: ActivatedRoute, private productsService: ProductsService, private snackBar: MatSnackBar) { }
   product:Product = {
     "name": "",
     "category": "",
@@ -33,7 +34,11 @@ export class ProductDetailsComponent implements OnInit {
   getProductDetail = () =>{
     this.productsService.getProductById(this.productId).subscribe((data: Product) => {
       this.product = data;
-    });
+    },(err)=> {
+      this.snackBar.open("Failed to fetch product details.Try again later!", 'Close', {
+        duration: 3000
+      });
+   });
   }
 
   back(){

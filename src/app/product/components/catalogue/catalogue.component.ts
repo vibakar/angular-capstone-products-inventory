@@ -61,6 +61,10 @@ export class CatalogueComponent implements OnInit {
        this.dataSource = new MatTableDataSource<Product>(data);
        this.products = data;
        this.productsCopy = data;
+    },(err)=> {
+      this.snackBar.open("Failed to get product list.Try again later!", 'Close', {
+	  duration: 3000
+      });
     });
   }
 
@@ -106,7 +110,11 @@ export class CatalogueComponent implements OnInit {
         this.productsService.deleteProduct(row.id).subscribe(()=> {
           this.getAllProducts();
           this.snackBar.open(`Product "${row.name}" deleted sucessfully!`, 'Close', {duration: 3000});
-        });
+        },(err)=> {
+          this.snackBar.open(`Failed to delete product "${row.name}".Try again later!`, 'Close', {
+            duration: 3000
+          });
+       });
       }
     });
   }
@@ -125,6 +133,10 @@ export class CatalogueComponent implements OnInit {
             this.child.clearSelection();
             this.snackBar.open(`All the selected products deleted sucessfully!`, 'Close', {duration: 3000});
           }, 1000);
+        },(err)=> {
+          this.snackBar.open("Failed to delete selected products.Try again later!", 'Close', {
+            duration: 3000
+          });
         });
       }
     });

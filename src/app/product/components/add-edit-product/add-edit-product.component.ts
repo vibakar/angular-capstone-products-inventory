@@ -36,12 +36,20 @@ export class AddEditProductComponent implements OnInit {
       this.snackBar.open(`Product "${this.product.name}" added sucessfully!`, 'Close', {
         duration: 3000
       });
+    },(err)=> {
+      this.snackBar.open(`Failed to add product "${this.product.name}".Try again later!`, 'Close', {
+        duration: 3000
+      });
     })
   }
 
   getProductDetail = () =>{
     this.productsService.getProductById(this.productId).subscribe((data: Product) => {
       this.product = data;
+    },(err)=> {
+      this.snackBar.open("Something went wrong.Try again later!", 'Close', {
+        duration: 3000
+      });
     });
   }
 
@@ -49,6 +57,10 @@ export class AddEditProductComponent implements OnInit {
     this.productsService.updateProduct(this.product).subscribe(() => {
       this.router.navigate(['/']);
       this.snackBar.open(`Product "${this.product.name}" updated sucessfully!`, 'Close', {
+        duration: 3000
+      });
+    },(err)=> {
+      this.snackBar.open(`Failed to update product "${this.product.name}".Try again later!`, 'Close', {
         duration: 3000
       });
     });

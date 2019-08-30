@@ -8,7 +8,7 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   getProducts() {
-  	return this.http.get(this.configUrl + "/products");
+    return this.http.get(this.configUrl + "/products");
   }
 
   addProduct(payload) {
