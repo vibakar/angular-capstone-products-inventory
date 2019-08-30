@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { ProductRoutingModule } from './product-routing.module';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
@@ -53,7 +54,8 @@ import { CatalogueTableComponent } from './components/catalogue-table/catalogue-
     MatButtonModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    NgxSpinnerModule
   ],
   providers: [ ProductsService, AuthService ],
   entryComponents: [ DeleteModelComponent ]

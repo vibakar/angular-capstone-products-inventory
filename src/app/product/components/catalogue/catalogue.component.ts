@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgxSpinnerService } from "ngx-spinner";
 
 import { DeleteModelComponent } from '../delete-model/delete-model.component';
 import { CatalogueTableComponent } from '../catalogue-table/catalogue-table.component';
@@ -30,7 +31,7 @@ export class CatalogueComponent implements OnInit {
   dataSource = new MatTableDataSource<Product>(this.products);
   selectedIds:number[] = [];
 
-  constructor(private productsService: ProductsService, private authService: AuthService, public dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(private productsService: ProductsService, private authService: AuthService, public dialog: MatDialog, private snackBar: MatSnackBar, private spinner: NgxSpinnerService) {
     this.getAllProducts();
   }
 
@@ -57,14 +58,15 @@ export class CatalogueComponent implements OnInit {
   }
 
   getAllProducts() {
+    this.spinner.show();
     this.productsService.getProducts().subscribe((data: Product[])=> {
+       this.spinner.hide();
        this.dataSource = new MatTableDataSource<Product>(data);
        this.products = data;
        this.productsCopy = data;
     },(err)=> {
-      this.snackBar.open("Failed to get product list.Try again later!", 'Close', {
-	  duration: 3000
-      });
+      this.spinner.hide();
+      this.snackBar.open("Failed to get product list.Try again later!", 'Ok', {duration: 3000});
     });
   }
 
@@ -107,13 +109,14 @@ export class CatalogueComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result == 'yes') {
+        this.spinner.show();
         this.productsService.deleteProduct(row.id).subscribe(()=> {
+          this.spinner.hide();
           this.getAllProducts();
-          this.snackBar.open(`Product "${row.name}" deleted sucessfully!`, 'Close', {duration: 3000});
+          this.snackBar.open(`Product "${row.name}" deleted sucessfully!`, 'Ok', {duration: 3000});
         },(err)=> {
-          this.snackBar.open(`Failed to delete product "${row.name}".Try again later!`, 'Close', {
-            duration: 3000
-          });
+          this.spinner.hide();
+          this.snackBar.open(`Failed to delete product "${row.name}".Try again later!`, 'Ok', {duration: 3000});
        });
       }
     });
@@ -127,16 +130,17 @@ export class CatalogueComponent implements OnInit {
 
     mulDelDialogRef.afterClosed().subscribe(result => {
       if(result == 'yes') {
+        this.spinner.show();
         this.productsService.deleteMulProduct(this.selectedIds).subscribe(()=> {
           setTimeout(()=> {
+            this.spinner.hide();
             this.getAllProducts();
             this.child.clearSelection();
-            this.snackBar.open(`All the selected products deleted sucessfully!`, 'Close', {duration: 3000});
-          }, 1000);
+            this.snackBar.open(`All the selected products deleted sucessfully!`, 'Ok', {duration: 3000});
+          }, 2000);
         },(err)=> {
-          this.snackBar.open("Failed to delete selected products.Try again later!", 'Close', {
-            duration: 3000
-          });
+          this.spinner.hide();
+          this.snackBar.open("Failed to delete selected products.Try again later!", 'Ok', {duration: 3000});
         });
       }
     });
