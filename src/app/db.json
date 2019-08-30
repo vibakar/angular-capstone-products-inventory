@@ -70,5 +70,16 @@
       "image": "https://cdn.hiptoro.com/wp-content/uploads/2019/05/OnePlus-7-Pro-specs-price-buy.jpg",
       "id": 32346
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "emailId": "vibakar23@gmail.com",
+      "password": "Password@123",
+      "firstName": "Vibakar",
+      "lastName": "K V",
+      "location": "Bangalore",
+      "mobileNo": "7639228797"
+    }
   ]
 }

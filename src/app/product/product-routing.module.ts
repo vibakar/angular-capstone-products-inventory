@@ -20,10 +20,6 @@ const routes: Routes = [{
 	path: 'product-detail/:id',
 	component: ProductDetailsComponent,
 	canActivate: [ ProductGuard ]
-}, {
-	path: "**",
-	redirectTo: "/",
-	pathMatch: 'full'
 }];
 
 @NgModule({

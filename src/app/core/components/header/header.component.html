@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span><a [routerLink]="['/']">Products Inventory</a></span>
+  <span class="spacer"></span>
+  <span *ngIf="!isLoggedIn"><a href="javascript:void(0)">Signin</a></span>
+  <span class="dropdown" *ngIf="isLoggedIn" [matMenuTriggerFor]="menu">
+	Vibakar <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </span>
+  <mat-menu #menu="matMenu">
+	<button mat-menu-item >
+	   <span (click)="goToProfile()">Profile</span>
+	</button>
+	<button mat-menu-item>
+	   <span>Logout</span>
+	</button>
+  </mat-menu>
+</mat-toolbar>

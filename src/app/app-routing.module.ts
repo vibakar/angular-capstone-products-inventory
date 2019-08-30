@@ -6,7 +6,7 @@ const routes: Routes = [{
 	loadChildren: './product/product.module#ProductModule'
 },{
 	path: "**",
-	redirectTo: "/",
+	redirectTo: "/product",
 	pathMatch: 'full'
 }];
 
