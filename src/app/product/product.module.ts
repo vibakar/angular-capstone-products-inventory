@@ -28,7 +28,7 @@ import { CatalogueTableComponent } from './components/catalogue-table/catalogue-
 
 @NgModule({
   declarations: [ 
-  	CatalogueComponent,
+    CatalogueComponent,
     AddEditProductComponent,
     ProductDetailsComponent,
     DeleteModelComponent,

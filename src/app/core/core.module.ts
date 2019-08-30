@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'; 
 import { MatMenuModule } from '@angular/material/menu';
-
+import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { CoreRoutingModule } from './core-routing.module';
+
 import { HeaderComponent } from './components/header/header.component';
 import { CoreService } from './services/core.service';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -16,7 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
   ],
   imports: [
     CommonModule,
-    CoreRoutingModule,
+    RouterModule,
     HttpClientModule,
     MatToolbarModule,
     MatMenuModule
@@ -25,7 +25,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     CoreService
   ],
   exports: [
-  	HeaderComponent
+    HeaderComponent,
+    ProfileComponent
   ]
 })
 export class CoreModule { }
