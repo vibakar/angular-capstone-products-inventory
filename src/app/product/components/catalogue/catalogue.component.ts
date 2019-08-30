@@ -20,8 +20,8 @@ export class CatalogueComponent implements OnInit {
   @ViewChild(CatalogueTableComponent, {static: false}) child: CatalogueTableComponent;
   isLoggedIn:boolean = false;
   gridView:boolean = true;
-  products: Product[];
-  productsCopy: Product[];
+  products: Product[] = [];
+  productsCopy: Product[] = [];
   filterValue:string;
   selectedCategory:string = "All";
   selectedFields = new FormControl(['Category', 'Manufacturer', 'Price']);

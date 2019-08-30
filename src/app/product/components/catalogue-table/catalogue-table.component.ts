@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, EventEmitter  } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-
+import { MatPaginator } from '@angular/material/paginator';
 import { Product } from '../../models/Product';
 
 @Component({
@@ -12,12 +12,14 @@ export class CatalogueTableComponent implements OnInit {
   @Input() isLoggedIn:boolean;
   @Input() dataSource;
   @Input() displayedColumns;
-  selection = new SelectionModel<Product>(true, []);
   @Output() openDeleteDialog = new EventEmitter();
   @Output() selectedRows = new EventEmitter();
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  selection = new SelectionModel<Product>(true, []);
   constructor() { }
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   openDelDialog(row) {

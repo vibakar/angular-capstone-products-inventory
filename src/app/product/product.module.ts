@@ -4,6 +4,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from "ngx-spinner";
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { MatPaginatorModule } from '@angular/material';
 
 import { ProductRoutingModule } from './product-routing.module';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
@@ -44,6 +45,7 @@ import { CatalogueTableComponent } from './components/catalogue-table/catalogue-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
     MatCardModule,
     MatGridListModule,
     MatInputModule,
@@ -55,7 +57,7 @@ import { CatalogueTableComponent } from './components/catalogue-table/catalogue-
     MatSnackBarModule,
     MatDialogModule,
     MatDividerModule,
-    NgxSpinnerModule
+    MatPaginatorModule
   ],
   providers: [ ProductsService, AuthService ],
   entryComponents: [ DeleteModelComponent ]
