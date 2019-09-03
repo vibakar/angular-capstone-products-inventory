@@ -1,0 +1,59 @@
+<div class="loginForm" *ngIf="login">
+	<h3>Login</h3>
+	<p>
+		<mat-form-field class="w-100" appearance="outline">
+			<mat-label>Email</mat-label>
+			<input matInput placeholder="Enter Email ID">
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field class="w-100" appearance="outline">
+			<mat-label>Password</mat-label>
+			<input matInput placeholder="Enter Password">
+		</mat-form-field>
+	</p>
+	<p>
+		<button class="w-100" mat-flat-button color="primary">Login</button>
+	</p>
+	<p>
+		<span>Not registered yet? <a href="javascript:void(0)" (click)="toggleForm()">Register here</a></span>
+	</p>
+</div>
+
+<div class="loginForm" *ngIf="!login">
+	<h3>Signup</h3>
+	<p>
+		<mat-form-field class="w-48 mr-4" appearance="outline">
+			<mat-label>First Name</mat-label>
+			<input matInput placeholder="Enter First Name" autofocus="true">
+		</mat-form-field>
+		<mat-form-field class="w-48" appearance="outline">
+			<mat-label>Last Name</mat-label>
+			<input matInput placeholder="Enter Last Name">
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field class="w-100" appearance="outline">
+			<mat-label>Email</mat-label>
+			<input matInput placeholder="Enter Email ID">
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field class="w-100" appearance="outline">
+			<mat-label>Password</mat-label>
+			<input matInput placeholder="Enter Password">
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field class="w-100" appearance="outline">
+			<mat-label>Confirm Password</mat-label>
+			<input matInput placeholder="Enter Confirm Password">
+		</mat-form-field>
+	</p>
+	<p>
+		<button class="w-100" mat-flat-button color="primary">Signup</button>
+	</p>
+	<p>
+		<span>Already have an account? <a href="javascript:void(0)"(click)="toggleForm()">Login here</a></span>
+	</p>
+</div>
