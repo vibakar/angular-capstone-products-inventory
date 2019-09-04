@@ -68,6 +68,9 @@
 			<mat-error *ngIf="newPwd.touched && newPwd.invalid">
 		      <span *ngIf="newPwd.errors.required">Password is required</span>
 		    </mat-error>
+		    <mat-error *ngIf="signUpData.password.length > 0 && !pwdRegex.test(signUpData.password)">
+		      <span>Password should contain ateast 8 charcters with 1 uppercase, 1 lowercase, 1 digit and 1 special character</span>
+		    </mat-error>
 		</p>
 		<p>
 			<mat-form-field class="w-100" appearance="outline">
@@ -77,9 +80,12 @@
 			<mat-error *ngIf="cnPwd.touched && cnPwd.invalid">
 		      <span *ngIf="cnPwd.errors.required">Confirm Password is required</span>
 		    </mat-error>
+		    <mat-error *ngIf="(signUpData.password && signUpData.cnPassword) && (signUpData.password !== signUpData.cnPassword)">
+		    	<span>Password and Confirm Password should be same</span>
+		    </mat-error>
 		</p>
 		<p>
-			<button class="w-100" mat-flat-button color="primary" [disabled]="signupForm.invalid ? true :false" (click)="signUp()">Signup</button>
+			<button class="w-100" mat-flat-button color="primary" [disabled]="((signupForm.invalid) || (signUpData.password !== signUpData.cnPassword) || !pwdRegex.test(signUpData.password)) ? true :false" (click)="signUp()">Signup</button>
 		</p>
 		<p>
 			<span>Already have an account? <a href="javascript:void(0)"(click)="toggleForm()">Login here</a></span>
