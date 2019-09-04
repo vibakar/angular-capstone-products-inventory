@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <span><a [routerLink]="['/']">Products Inventory</a></span>
   <span class="spacer"></span>
-  <span *ngIf="!isLoggedIn"><a href="javascript:void(0)" (click)="openLoginDialog()">Signin</a></span>
+  <span *ngIf="!isLoggedIn"><a href="javascript:void(0)" (click)="openLoginDialog()">Login</a></span>
   <span class="dropdown" *ngIf="isLoggedIn" [matMenuTriggerFor]="menu">
 	Vibakar <i class="fa fa-caret-down" aria-hidden="true"></i>
   </span>

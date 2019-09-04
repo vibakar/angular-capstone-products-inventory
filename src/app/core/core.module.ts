@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
@@ -22,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     HttpClientModule,
     MatToolbarModule,
     MatMenuModule,

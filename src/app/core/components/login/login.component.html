@@ -1,59 +1,88 @@
-<div class="loginForm" *ngIf="login">
-	<h3>Login</h3>
-	<p>
-		<mat-form-field class="w-100" appearance="outline">
-			<mat-label>Email</mat-label>
-			<input matInput placeholder="Enter Email ID">
-		</mat-form-field>
-	</p>
-	<p>
-		<mat-form-field class="w-100" appearance="outline">
-			<mat-label>Password</mat-label>
-			<input matInput placeholder="Enter Password">
-		</mat-form-field>
-	</p>
-	<p>
-		<button class="w-100" mat-flat-button color="primary">Login</button>
-	</p>
-	<p>
-		<span>Not registered yet? <a href="javascript:void(0)" (click)="toggleForm()">Register here</a></span>
-	</p>
+<div class="loginForm" *ngIf="isLogin">
+	<h3 class="center">Login</h3>
+	<form #loginForm="ngForm">
+		<p>
+			<mat-form-field class="w-100" appearance="outline">
+				<mat-label>Email</mat-label>
+				<input matInput placeholder="Enter Email ID" name="email" #email="ngModel" [(ngModel)]="loginData.email" required>
+			</mat-form-field>
+			<mat-error *ngIf="email.touched && email.invalid">
+		      <span *ngIf="email.errors.required">Email is required</span>
+		    </mat-error>
+		</p>
+		<p>
+			<mat-form-field class="w-100" appearance="outline">
+				<mat-label>Password</mat-label>
+				<input matInput placeholder="Enter Password" name="password" #password="ngModel" [(ngModel)]="loginData.password" required>
+			</mat-form-field>
+			<mat-error *ngIf="password.touched && password.invalid">
+		      <span *ngIf="password.errors.required">Password is required</span>
+		    </mat-error>
+		</p>
+		<p>
+			<button class="w-100" mat-flat-button color="primary" [disabled]="loginForm.invalid ? true :false" (click)="login()">Login</button>
+		</p>
+		<p>
+			<span>Not registered yet? <a href="javascript:void(0)" (click)="toggleForm()">Register here</a></span>
+		</p>
+	</form>
 </div>
 
-<div class="loginForm" *ngIf="!login">
-	<h3>Signup</h3>
-	<p>
-		<mat-form-field class="w-48 mr-4" appearance="outline">
-			<mat-label>First Name</mat-label>
-			<input matInput placeholder="Enter First Name" autofocus="true">
-		</mat-form-field>
-		<mat-form-field class="w-48" appearance="outline">
-			<mat-label>Last Name</mat-label>
-			<input matInput placeholder="Enter Last Name">
-		</mat-form-field>
-	</p>
-	<p>
-		<mat-form-field class="w-100" appearance="outline">
-			<mat-label>Email</mat-label>
-			<input matInput placeholder="Enter Email ID">
-		</mat-form-field>
-	</p>
-	<p>
-		<mat-form-field class="w-100" appearance="outline">
-			<mat-label>Password</mat-label>
-			<input matInput placeholder="Enter Password">
-		</mat-form-field>
-	</p>
-	<p>
-		<mat-form-field class="w-100" appearance="outline">
-			<mat-label>Confirm Password</mat-label>
-			<input matInput placeholder="Enter Confirm Password">
-		</mat-form-field>
-	</p>
-	<p>
-		<button class="w-100" mat-flat-button color="primary">Signup</button>
-	</p>
-	<p>
-		<span>Already have an account? <a href="javascript:void(0)"(click)="toggleForm()">Login here</a></span>
-	</p>
+<div class="loginForm" *ngIf="!isLogin">
+	<h3 class="center">Signup</h3>
+	<form #signupForm="ngForm">
+		<p>
+			<mat-form-field class="w-48 mr-4" appearance="outline">
+				<mat-label>First Name</mat-label>
+				<input matInput placeholder="Enter First Name" name="fname" #fname="ngModel"  [(ngModel)]="signUpData.firstName" minlength="3" maxlength="20" required>
+			</mat-form-field>
+			<mat-form-field class="w-48" appearance="outline">
+				<mat-label>Last Name</mat-label>
+				<input matInput placeholder="Enter Last Name" name="lname" #lname="ngModel" [(ngModel)]="signUpData.lastName" minlength="1" maxlength="20" required>
+			</mat-form-field>
+			<mat-error *ngIf="fname.touched && fname.invalid">
+		      <span *ngIf="fname.errors.required">First Name is required</span>
+		      <span *ngIf="fname.errors.minlength">First Name should contain min 3 characters</span>
+		      <span *ngIf="fname.errors.maxlength">First Name cannot exceed 20 characters</span>
+		    </mat-error>
+		    <mat-error *ngIf="lname.touched && lname.invalid">
+		      <span *ngIf="lname.errors.required">Last Name is required</span>
+		      <span *ngIf="lname.errors.minlength">Last Name should contain min 1 characters</span>
+		      <span *ngIf="lname.errors.maxlength">Last Name cannot exceed 20 characters</span>
+		    </mat-error>
+		</p>
+		<p>
+			<mat-form-field class="w-100" appearance="outline">
+				<mat-label>Email</mat-label>
+				<input matInput placeholder="Enter Email ID" #newEmail="ngModel" name="newEmail" [(ngModel)]="signUpData.email" required>
+			</mat-form-field>
+			<mat-error *ngIf="newEmail.touched && newEmail.invalid">
+		      <span *ngIf="newEmail.errors.required">Email is required</span>
+		    </mat-error>
+		</p>
+		<p>
+			<mat-form-field class="w-100" appearance="outline">
+				<mat-label>Password</mat-label>
+				<input type="password" name="newPwd" #newPwd="ngModel" matInput placeholder="Enter Password" [(ngModel)]="signUpData.password" required>
+			</mat-form-field>
+			<mat-error *ngIf="newPwd.touched && newPwd.invalid">
+		      <span *ngIf="newPwd.errors.required">Password is required</span>
+		    </mat-error>
+		</p>
+		<p>
+			<mat-form-field class="w-100" appearance="outline">
+				<mat-label>Confirm Password</mat-label>
+				<input type="password" name="cnPwd" #cnPwd="ngModel" matInput placeholder="Enter Confirm Password" [(ngModel)]="signUpData.cnPassword" required>
+			</mat-form-field>
+			<mat-error *ngIf="cnPwd.touched && cnPwd.invalid">
+		      <span *ngIf="cnPwd.errors.required">Confirm Password is required</span>
+		    </mat-error>
+		</p>
+		<p>
+			<button class="w-100" mat-flat-button color="primary" [disabled]="signupForm.invalid ? true :false" (click)="signUp()">Signup</button>
+		</p>
+		<p>
+			<span>Already have an account? <a href="javascript:void(0)"(click)="toggleForm()">Login here</a></span>
+		</p>
+	</form>
 </div>
