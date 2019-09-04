@@ -80,6 +80,20 @@
       "lastName": "K V",
       "location": "Bangalore",
       "mobileNo": "7639228797"
+    },
+    {
+      "firstName": "Virat",
+      "lastName": "Kohli",
+      "emailId": "virat@gmail.com",
+      "password": "Virat@183",
+      "id": 2
+    },
+    {
+      "firstName": "Sundhar",
+      "lastName": "V",
+      "emailId": "sundhar@gmail.com",
+      "password": "Sundhar@183",
+      "id": 3
     }
   ]
 }

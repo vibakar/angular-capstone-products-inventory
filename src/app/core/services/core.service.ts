@@ -7,7 +7,7 @@ export class CoreService {
   constructor(private http: HttpClient) { }
 
   isLoggedIn() {
-    let email = localStorage.getItem("email");
+    let email = sessionStorage.getItem("userId");
     if(email)
     	return true;
     else
@@ -18,4 +18,11 @@ export class CoreService {
   	return this.http.get(this.configUrl + "/users/" + id);
   }
 
+  getUsers() {
+    return this.http.get(this.configUrl + "/users/");
+  }
+
+  addUser(payload) {
+    return this.http.post(this.configUrl + "/users/", payload);
+  }
 }

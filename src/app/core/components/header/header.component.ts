@@ -12,9 +12,11 @@ import { LoginComponent } from '../login/login.component';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn:boolean = false;
+  userName:string;
   constructor(private router: Router, private coreService: CoreService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.userName = sessionStorage.getItem('name');
   	this.isLoggedIn = this.coreService.isLoggedIn();
   }
 
@@ -23,10 +25,19 @@ export class HeaderComponent implements OnInit {
   }
 
   openLoginDialog(): void {
-    const dialogRef = this.dialog.open(LoginComponent);
+    this.dialog.open(LoginComponent);
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+  logout() {
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('name');
+    if(window.location.pathname == '/') {
+      window.location.reload();
+    } else {
+      this.router.navigate(['/']);
+      setTimeout(()=> {
+        window.location.reload();
+      }, 500)
+    }
   }
 }

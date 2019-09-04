@@ -8,7 +8,7 @@ export class AuthService {
   constructor() { }
 
   isLoggedIn() {
-    let email = localStorage.getItem("email");
+    let email = sessionStorage.getItem("userId");
     if(email)
     	return true;
     else

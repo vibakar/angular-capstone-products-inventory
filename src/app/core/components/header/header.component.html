@@ -3,13 +3,13 @@
   <span class="spacer"></span>
   <span *ngIf="!isLoggedIn"><a href="javascript:void(0)" (click)="openLoginDialog()">Login</a></span>
   <span class="dropdown" *ngIf="isLoggedIn" [matMenuTriggerFor]="menu">
-	Vibakar <i class="fa fa-caret-down" aria-hidden="true"></i>
+	{{userName}} <i class="fa fa-caret-down" aria-hidden="true"></i>
   </span>
   <mat-menu #menu="matMenu">
-	<button mat-menu-item >
-	   <span (click)="goToProfile()">Profile</span>
+	<button mat-menu-item (click)="goToProfile()">
+	   <span>Profile</span>
 	</button>
-	<button mat-menu-item>
+	<button mat-menu-item (click)="logout()">
 	   <span>Logout</span>
 	</button>
   </mat-menu>

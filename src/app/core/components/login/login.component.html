@@ -4,7 +4,7 @@
 		<p>
 			<mat-form-field class="w-100" appearance="outline">
 				<mat-label>Email</mat-label>
-				<input matInput placeholder="Enter Email ID" name="email" #email="ngModel" [(ngModel)]="loginData.email" required>
+				<input type="email" matInput placeholder="Enter Email ID" name="email" #email="ngModel" [(ngModel)]="loginData.emailId" required>
 			</mat-form-field>
 			<mat-error *ngIf="email.touched && email.invalid">
 		      <span *ngIf="email.errors.required">Email is required</span>
@@ -13,11 +13,14 @@
 		<p>
 			<mat-form-field class="w-100" appearance="outline">
 				<mat-label>Password</mat-label>
-				<input matInput placeholder="Enter Password" name="password" #password="ngModel" [(ngModel)]="loginData.password" required>
+				<input type="password" matInput placeholder="Enter Password" name="password" #password="ngModel" [(ngModel)]="loginData.password" required>
 			</mat-form-field>
 			<mat-error *ngIf="password.touched && password.invalid">
 		      <span *ngIf="password.errors.required">Password is required</span>
 		    </mat-error>
+		</p>
+		<p *ngIf="loginErr" class="center">
+			<mat-error>EmailId or Password incorrect</mat-error>
 		</p>
 		<p>
 			<button class="w-100" mat-flat-button color="primary" [disabled]="loginForm.invalid ? true :false" (click)="login()">Login</button>
@@ -54,7 +57,7 @@
 		<p>
 			<mat-form-field class="w-100" appearance="outline">
 				<mat-label>Email</mat-label>
-				<input matInput placeholder="Enter Email ID" #newEmail="ngModel" name="newEmail" [(ngModel)]="signUpData.email" required>
+				<input matInput placeholder="Enter Email ID" #newEmail="ngModel" name="newEmail" [(ngModel)]="signUpData.emailId" required>
 			</mat-form-field>
 			<mat-error *ngIf="newEmail.touched && newEmail.invalid">
 		      <span *ngIf="newEmail.errors.required">Email is required</span>
