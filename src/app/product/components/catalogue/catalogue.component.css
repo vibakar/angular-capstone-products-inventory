@@ -28,3 +28,7 @@ mat-button-toggle-group {
 button {
   cursor: pointer;
 }
+.no-data {
+  text-align: center;
+  margin-top: 5%;
+}

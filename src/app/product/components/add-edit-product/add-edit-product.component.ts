@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from "ngx-spinner";
+import { NgForm } from "@angular/forms";
 
 import { ProductsService } from '../../services/products.service'
 import { Product } from '../../models/Product';
@@ -14,6 +15,8 @@ import { Product } from '../../models/Product';
 export class AddEditProductComponent implements OnInit {
  
   constructor(private router: Router, private productsService: ProductsService, private snackBar: MatSnackBar, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
+  productId:string;
+  @ViewChild('productForm', {static: false}) productForm;
   product:Product = {
     "name": "",
     "category": "",
@@ -23,12 +26,23 @@ export class AddEditProductComponent implements OnInit {
     "description": "",
     "image": ""
   }
-  productId:string;
+  
   ngOnInit() {
     this.productId = this.route.snapshot.paramMap.get('id');
     if(this.productId){
       this.getProductDetail();
     }
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+    unloadNotification($event: any) {
+        if (this.hasUnsavedData()) {
+            $event.returnValue = true;
+        }
+  }
+
+  hasUnsavedData = () => {
+    return this.productForm.dirty;
   }
 
   addProduct = () =>{
@@ -64,5 +78,9 @@ export class AddEditProductComponent implements OnInit {
       this.spinner.hide();
       this.snackBar.open(`Failed to update product "${this.product.name}".Try again later!`, 'Ok', {duration: 3000});
     });
+  }
+
+  goToHome = () => {
+    this.router.navigate(['/']);
   }
 }
