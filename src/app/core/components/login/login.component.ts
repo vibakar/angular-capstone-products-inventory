@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 
 import { CoreService } from '../../services/core.service';
-import { User } from '../../models/user';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-login',
@@ -59,7 +59,12 @@ export class LoginComponent implements OnInit {
   }
 
   signUp() {
-    this.coreService.addUser(this.signUpData).subscribe((data: User)=> {
+    var obj = Object.assign({}, this.signUpData);
+    obj['location'] = '';
+    obj['mobileNo'] = '';
+    obj['views'] = {};
+    delete obj['cnPassword'];
+    this.coreService.addUser(obj).subscribe((data: User)=> {
       sessionStorage.setItem("userId", data.id.toString());
       sessionStorage.setItem("name", data.firstName);
       this.dialogRef.close();
