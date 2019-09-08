@@ -1,3 +1,23 @@
 .dropdown-item {
 	text-decoration: none !important;
 }
+
+.w-100 {
+	width: 250px;
+    margin-left: 45px;
+}
+.w-800 {
+	width: 800px;
+	margin-left: 450px;
+    margin-top: 10px;
+}
+.changePassword{
+	float: right;
+	margin-top: 40px;
+	margin-right: 10px
+
+}
+.flex{
+	display:flex;
+	float: right;
+}

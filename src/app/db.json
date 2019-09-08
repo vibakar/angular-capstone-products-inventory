@@ -75,7 +75,7 @@
     {
       "id": 1,
       "emailId": "vibakar23@gmail.com",
-      "password": "Password@123",
+      "password": "Sundar!12",
       "firstName": "Vibakar",
       "lastName": "K V",
       "location": "Bangalore",
@@ -94,6 +94,13 @@
       "emailId": "sundhar@gmail.com",
       "password": "Sundhar@183",
       "id": 3
+    },
+    {
+      "firstName": "sundaresan",
+      "lastName": "V",
+      "emailId": "sundargopal26@gmail.com",
+      "password": "Sundar!10",
+      "id": 4
     }
   ]
 }

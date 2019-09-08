@@ -25,4 +25,7 @@ export class CoreService {
   addUser(payload) {
     return this.http.post(this.configUrl + "/users/", payload);
   }
+  updateUser(payload) {
+    return this.http.put(this.configUrl + "/users/" + payload.id,payload)
+  }
 }
