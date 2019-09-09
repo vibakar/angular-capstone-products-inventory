@@ -1,15 +1,18 @@
 .dropdown-item {
 	text-decoration: none !important;
 }
-
+.profile-acc {
+	margin-top: 30px;
+}
 .w-100 {
 	width: 250px;
-    margin-left: 45px;
+	margin-right: 15px;
 }
 .w-800 {
 	width: 800px;
 	margin-left: 300px;
-    margin-top: 10px;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
 .changePassword{
 	float: right;
@@ -24,4 +27,7 @@
 .back{
 	margin-left: 45%;
     margin-top: 10px;
+}
+.label{
+	margin-left: 10px;
 }

@@ -55,8 +55,12 @@ export class ProfileComponent implements OnInit {
   editProfileDone = () =>{
     if(this.editBtn){
       this.coreService.updateUser(this.user).subscribe(()=>{
-        this.router.navigate(['/']);
         this.snackBar.open(`profile updated sucessfully!`, 'Ok',{duration: 3000});
+        this.cancel();
+        sessionStorage.removeItem('name');
+        sessionStorage.setItem("name", this.user.firstName);
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+        this.router.navigate(["/profile"])); 
       })
     }
     this.step++;
@@ -66,22 +70,22 @@ export class ProfileComponent implements OnInit {
     this.step = index;
   }
 
-  EditPassword = () =>{
-    this.isEditPassword = !this.isEditPassword
-    this.changeBtn = true;
-  }
-
   updatePassword =() =>{
     if(this.password.cnPassword.length>0){
       this.user.password=this.password.cnPassword;
       this.coreService.updateUser(this.user).subscribe(()=>{
-      this.router.navigate(['/']);
       this.snackBar.open(`Password changed sucessfully!`, 'Ok',{duration: 3000});
+      // this.step--;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["/profile"])); 
+      
     })
     }
+    
   }
 
-  back = () =>{
-    this.router.navigate(['/']);
+  cancel = () =>{
+  this.isEditProfile = true;
+  this.editBtn = false;
   }
 }

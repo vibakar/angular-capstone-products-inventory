@@ -86,6 +86,36 @@
         "4": 4
       },
       "id": 1
+    },
+    {
+      "firstName": "Sundar",
+      "lastName": "Gopal",
+      "emailId": "sundargopal26@gmail.com",
+      "password": "Sundar!1",
+      "location": "",
+      "mobileNo": "",
+      "views": {},
+      "id": 2
+    },
+    {
+      "firstName": "Sundaresan",
+      "lastName": "Gopal",
+      "emailId": "sundargopal2@gmail.com",
+      "password": "Sundar!1",
+      "location": "Erode",
+      "mobileNo": 9865089677,
+      "views": {},
+      "id": 3
+    },
+    {
+      "firstName": "Hari",
+      "lastName": "Gopal",
+      "emailId": "har@gmail.com",
+      "password": "Sundar!1",
+      "location": "Erode",
+      "mobileNo": 9865089625,
+      "views": {},
+      "id": 4
     }
   ]
 }

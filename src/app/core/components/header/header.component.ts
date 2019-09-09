@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.userName = sessionStorage.getItem('name');
+    console.log(this.userName,"rendering userName")
   	this.isLoggedIn = this.coreService.isLoggedIn();
   }
 
