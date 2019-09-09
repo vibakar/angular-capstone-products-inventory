@@ -1,33 +1,18 @@
 .dropdown-item {
 	text-decoration: none !important;
 }
-.profile-acc {
+.mt-30 {
 	margin-top: 30px;
 }
 .w-100 {
 	width: 250px;
 	margin-right: 15px;
 }
-.w-800 {
+.acc {
 	width: 800px;
-	margin-left: 300px;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	margin: 20px auto;
 }
-.changePassword{
-	float: right;
-	margin-top: 40px;
-	margin-right: 10px
-
-}
-.flex{
-	display:flex;
-	float: right;
-}
-.back{
-	margin-left: 45%;
-    margin-top: 10px;
-}
-.label{
-	margin-left: 10px;
+.changePwdBtn{
+	margin-right: 10px;
+	width: 250px;
 }

@@ -1,6 +1,6 @@
 <mat-grid-list cols="3">
   <mat-grid-tile *ngFor="let product of products">
-    <div >
+    <div>
     <mat-card class="product-card">
       <a [routerLink]="['product-detail', product.id]">
         <img mat-card-image src="{{product.image}}" alt="{{product.name}}">
