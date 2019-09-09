@@ -31,4 +31,12 @@ export class ProductsService {
     let requests = ids.map(id => this.deleteProduct(id));
     return forkJoin(requests);
   }
+
+  updateViews(payload) {
+    return this.http.put(this.configUrl + "/users/" + payload.id, payload);
+  }
+
+  getUser(id) {
+    return this.http.get(this.configUrl + "/users/" + id);
+  }
 }

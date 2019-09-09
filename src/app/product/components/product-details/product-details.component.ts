@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from "ngx-spinner";
 
 import { Product } from '../../models/Product';
+import { User } from '../../models/User';
 import { ProductsService } from '../../services/products.service'
 
 @Component({
@@ -30,6 +31,7 @@ export class ProductDetailsComponent implements OnInit {
     if(this.productId){
       this.getProductDetail();
     }
+    this.updateViews();
   }
 
   getProductDetail = () =>{
@@ -41,6 +43,22 @@ export class ProductDetailsComponent implements OnInit {
       this.spinner.hide();
       this.snackBar.open("Failed to fetch product details.Try again later!", 'Ok', {duration: 3000});
    });
+  }
+
+  updateViews() {
+    let userId = sessionStorage.getItem('userId');
+    this.productsService.getUser(userId).subscribe((user: User) => {
+      if(user.views[this.productId])
+        user.views[this.productId] = user.views[this.productId] + 1;
+      else
+        user.views[this.productId] = 1;
+
+      this.productsService.updateViews(user).subscribe(() => {
+        console.log("views updated");
+      }, (err) => {
+        console.log("views update failed");
+      });
+    });
   }
 
   back(){

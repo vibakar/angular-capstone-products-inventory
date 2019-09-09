@@ -4,6 +4,11 @@ export interface User {
   "password": string;
   "firstName": string;
   "lastName": string;
-  "location"?: string;
-  "mobileNo"?: string;
+  "location": string;
+  "mobileNo": string;
+  "views": Views;
+}
+
+interface Views {
+	[key: string]: number;
 }

@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, NoPreloading } from '@angular/router';
 import { ProfileComponent } from './core/components/profile/profile.component';
+import { AppGuard } from './app.guard';
 
 const routes: Routes = [{
 	path: '',
 	loadChildren: './product/product.module#ProductModule'
 },{
 	path: 'profile',
-	component: ProfileComponent
+	component: ProfileComponent,
+	canActivate: [ AppGuard ]
 },{
 	path: "**",
 	redirectTo: "/",

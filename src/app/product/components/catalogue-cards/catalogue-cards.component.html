@@ -9,7 +9,7 @@
       <mat-card-subtitle>
         <p>{{product.description || '-'}}</p>
         <p>
-           <span>&#8377;{{product.price}}</span>
+           <span>{{product.price | currency:"₹"}}</span>
         </p>
       </mat-card-subtitle>
       <p *ngIf="isLoggedIn">

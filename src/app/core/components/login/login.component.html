@@ -20,7 +20,7 @@
 		    </mat-error>
 		</p>
 		<p *ngIf="loginErr" class="center">
-			<mat-error>EmailId or Password incorrect</mat-error>
+			<mat-error>{{loginErr}}</mat-error>
 		</p>
 		<p>
 			<button class="w-100" mat-flat-button color="primary" [disabled]="loginForm.invalid ? true :false" (click)="login()">Login</button>
@@ -57,11 +57,12 @@
 		<p>
 			<mat-form-field class="w-100" appearance="outline">
 				<mat-label>Email</mat-label>
-				<input matInput placeholder="Enter Email ID" #newEmail="ngModel" name="newEmail" [(ngModel)]="signUpData.emailId" required>
+				<input type="email" matInput placeholder="Enter Email ID" #newEmail="ngModel" name="newEmail" (keyup)="checkEmail($event)" [(ngModel)]="signUpData.emailId" required>
 			</mat-form-field>
 			<mat-error *ngIf="newEmail.touched && newEmail.invalid">
 		      <span *ngIf="newEmail.errors.required">Email is required</span>
 		    </mat-error>
+		    <mat-error *ngIf="userExists">Email already exists</mat-error>
 		</p>
 		<p>
 			<mat-form-field class="w-100" appearance="outline">
@@ -87,6 +88,9 @@
 		    	<span>Password and Confirm Password should be same</span>
 		    </mat-error>
 		</p>
+		<p *ngIf="signupErr" class="center">
+			<mat-error>{{signupErr}}</mat-error>
+		</p>
 		<p>
 				<mat-form-field class="w-100" appearance="outline">
 						<mat-label>Mobile Number</mat-label>
@@ -110,6 +114,7 @@
 		</p>
 		<p>
 			<button class="w-100" mat-flat-button color="primary" [disabled]="((signupForm.invalid) || (signUpData.password !== signUpData.cnPassword) || !pwdRegex.test(signUpData.password)) ? true :false" (click)="signUp()">Signup</button>
+
 		</p>
 		<p>
 			<span>Already have an account? <a href="javascript:void(0)"(click)="toggleForm()">Login here</a></span>
