@@ -75,8 +75,8 @@
     {
       "id": 1,
       "emailId": "vibakar23@gmail.com",
-      "password": "Sundar!12",
-      "firstName": "Vibakar",
+      "password": "Vibakar!12",
+      "firstName": "Viba",
       "lastName": "K V",
       "location": "Bangalore",
       "mobileNo": "7639228797"
@@ -101,6 +101,23 @@
       "emailId": "sundargopal26@gmail.com",
       "password": "Sundar!10",
       "id": 4
+    },
+    {
+      "firstName": "Sundar",
+      "lastName": "Gopal",
+      "emailId": "sundargopal26@gmail.com",
+      "password": "Sundar!1",
+      "location": "Erode",
+      "id": 5
+    },
+    {
+      "firstName": "Sundaresan",
+      "lastName": "Venugopal",
+      "emailId": "sundargopal26@gmail.com",
+      "password": "Sundar!1",
+      "location": "Erode",
+      "mobileNo": 9865089625,
+      "id": 6
     }
   ]
 }

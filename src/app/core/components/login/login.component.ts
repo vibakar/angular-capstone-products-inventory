@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit {
     lastName: '',
     emailId: '',
     password: '',
-    cnPassword: ''
+    cnPassword: '',
+    location:"",
+    mobileNo:""
   }
   constructor(private coreService: CoreService, private router: Router, public dialogRef: MatDialogRef<LoginComponent>) { }
 

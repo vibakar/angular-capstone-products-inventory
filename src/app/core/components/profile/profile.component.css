@@ -8,7 +8,7 @@
 }
 .w-800 {
 	width: 800px;
-	margin-left: 450px;
+	margin-left: 300px;
     margin-top: 10px;
 }
 .changePassword{
@@ -20,4 +20,8 @@
 .flex{
 	display:flex;
 	float: right;
+}
+.back{
+	margin-left: 45%;
+    margin-top: 10px;
 }

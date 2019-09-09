@@ -12,7 +12,7 @@ import { CoreService } from '../../services/core.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private coreService: CoreService) { }
+  constructor(private route: ActivatedRoute, private coreService: CoreService, private router: Router, private snackBar: MatSnackBar) { }
   user:User  = {
     id:null,
    firstName:"",
@@ -30,8 +30,10 @@ export class ProfileComponent implements OnInit {
   }
   isEditProfile:boolean = true;
   isEditPassword:boolean = true;
-  btnDisable:boolean = false;
-  userId:string
+  editBtn:boolean = false;
+  changeBtn:boolean = false;
+  userId:string;
+  step = 0;
   ngOnInit() {
     this.userId= sessionStorage.getItem('userId')
     if(this.userId){
@@ -41,32 +43,45 @@ export class ProfileComponent implements OnInit {
 
   getUserDetail = () => {
     this.coreService.getUserById(this.userId).subscribe((data: User) => {
-        console.log(data,"--====---====--===>>>>")
         this.user = data;
     });
   }
 
   editProfile = () => {
     this.isEditProfile = !this.isEditProfile
-    console.log(this.isEditProfile,"--------------------------->>>")
-    this.btnDisable = true;
+    this.editBtn = true;
   }
 
   editProfileDone = () =>{
-    this.coreService.updateUser(this.user).subscribe(()=>{
-      console.log("sucesss",this.user)
-    })
+    if(this.editBtn){
+      this.coreService.updateUser(this.user).subscribe(()=>{
+        this.router.navigate(['/']);
+        this.snackBar.open(`profile updated sucessfully!`, 'Ok',{duration: 3000});
+      })
+    }
+    this.step++;
+  }
+
+  setStep(index: number) {
+    this.step = index;
   }
 
   EditPassword = () =>{
     this.isEditPassword = !this.isEditPassword
-    this.btnDisable = true;
+    this.changeBtn = true;
   }
 
   updatePassword =() =>{
-    this.user.password=this.password.cnPassword;
-    this.coreService.updateUser(this.user).subscribe(()=>{
-      console.log("sucesss password",this.user)
+    if(this.password.cnPassword.length>0){
+      this.user.password=this.password.cnPassword;
+      this.coreService.updateUser(this.user).subscribe(()=>{
+      this.router.navigate(['/']);
+      this.snackBar.open(`Password changed sucessfully!`, 'Ok',{duration: 3000});
     })
+    }
+  }
+
+  back = () =>{
+    this.router.navigate(['/']);
   }
 }

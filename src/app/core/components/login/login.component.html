@@ -88,6 +88,27 @@
 		    </mat-error>
 		</p>
 		<p>
+				<mat-form-field class="w-100" appearance="outline">
+						<mat-label>Mobile Number</mat-label>
+						<input type="number" matInput placeholder="Enter mobile number" name="mobileNo" #mobileNo="ngModel" [(ngModel)]="signUpData.mobileNo" minlength="10" required>
+					</mat-form-field>
+					<mat-error *ngIf="mobileNo.touched && mobileNo.invalid">
+							<span *ngIf="MobileNo.errors.required">Mobile number is required</span>
+							<span *ngIf="location.errors.minlength">Mobile number should contain min 10 characters</span>
+						</mat-error>
+		</p>
+		<p>
+				<mat-form-field class="w-100" appearance="outline">
+						<mat-label>Location</mat-label>
+						<input matInput placeholder="Enter location" name="location" #location="ngModel" [(ngModel)]="signUpData.location" minlength="1" maxlength="20" required>
+					</mat-form-field>
+					<mat-error *ngIf="location.touched && location.invalid">
+							<span *ngIf="location.errors.required">Location is required</span>
+							<span *ngIf="location.errors.minlength">Location should contain min 2 characters</span>
+							<span *ngIf="location.errors.maxlength">Location cannot exceed 20 characters</span>
+						</mat-error>
+		</p>
+		<p>
 			<button class="w-100" mat-flat-button color="primary" [disabled]="((signupForm.invalid) || (signUpData.password !== signUpData.cnPassword) || !pwdRegex.test(signUpData.password)) ? true :false" (click)="signUp()">Signup</button>
 		</p>
 		<p>
