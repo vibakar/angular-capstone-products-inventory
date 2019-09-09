@@ -1,1 +1,91 @@
-<p>profile works!</p>
+<mat-accordion>
+  <form #profileForm="ngForm" class="mt-30">
+    <mat-expansion-panel  class="acc" [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Personal Details
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput name="firstName" placeholder="First Name"  minlength="3" maxlength="20" [(ngModel)]="user.firstName" [disabled]="isEditProfile" required>
+      </mat-form-field>
+    
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput name="lname" placeholder="Last Name" minlength="1" maxlength="20" [(ngModel)]="user.lastName" [disabled]="isEditProfile" required>
+      </mat-form-field>
+     
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Email ID</mat-label>
+        <input type="email" matInput name="email"  placeholder="Email Id" [(ngModel)]="user.emailId" disabled required>
+      </mat-form-field>
+  
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Mobile Number</mat-label>
+        <input type="number" matInput name="mobileNo" placeholder="Mobile Number" [(ngModel)]="user.mobileNo" [disabled]="isEditProfile" required>
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Location</mat-label>
+        <input type="text" matInput name="location" placeholder="Location" minlength="1" maxlength="20" [(ngModel)]="user.location" [disabled]="isEditProfile" required>
+      </mat-form-field>
+
+      <div>
+        <button *ngIf="!editBtn" mat-flat-button color="primary" [disabled]="editBtn" (click)="editProfile()">Edit</button>
+        <button *ngIf="editBtn" mat-flat-button color="primary" (click)="editProfileDone()">Sumbit</button>
+        <button *ngIf="editBtn" mat-flat-button color="accent"  (click)="cancel()">Cancel</button>
+      </div>  
+    </mat-expansion-panel>
+</form>
+    <form #passwordForm="ngForm" class="profile-acc">
+        <mat-expansion-panel  class="acc" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+              Change Password
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Current Password</mat-label>
+                <input type="password" matInput name="currentPassword" #currentPassword="ngModel"  [(ngModel)]="password.currentPassword"  placeholder="Current password" required>
+              </mat-form-field>
+              <mat-error *ngIf="currentPassword.touched && currentPassword.invalid">
+                <span *ngIf="currentPassword.errors.required">Current Password is required</span>
+              </mat-error>
+              <mat-error *ngIf="password.currentPassword.length > 0 && user.password !== password.currentPassword">
+                <span>Current password is wrong</span>
+              </mat-error>
+            </p>
+            <p>
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>New Password</mat-label>
+                <input type="password" name="newPassword" #newPwd="ngModel" [(ngModel)]="password.newPassword" matInput placeholder="New password" required>
+              </mat-form-field>
+              <mat-error *ngIf="newPwd.touched && newPwd.invalid">
+                <span *ngIf="newPwd.errors.required">New password is required</span>
+              </mat-error>
+              <mat-error *ngIf="password.newPassword.length > 0 && !pwdRegex.test(password.newPassword)">
+                <span>Password should contain ateast 8 charcters with 1 uppercase, 1 lowercase, 1 digit and 1 special character</span>
+              </mat-error>
+              <mat-error *ngIf="(user.password == password.newPassword)">
+                 <span>New password should not be same as Current password</span>
+              </mat-error>
+            </p>
+            <p>
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" name="cnPassword" #cnPassword="ngModel" [(ngModel)]="password.cnPassword" matInput placeholder="Confirm password" required>
+              </mat-form-field>
+              <mat-error *ngIf="cnPassword.touched && cnPassword.invalid">
+                <span *ngIf="cnPassword.errors.required">Confirm Password is required</span>
+              </mat-error>
+              <mat-error *ngIf="(password.newPassword && password.cnPassword) && (password.newPassword !== password.cnPassword )">
+                <span>New password and Confirm password should be same</span>
+              </mat-error>
+            </p>
+            <button  *ngIf="!changeBtn" class="changePwdBtn" mat-flat-button color="primary" (click)="updatePassword()">Submit</button>
+        </mat-expansion-panel>
+    </form>
+  </mat-accordion>

@@ -91,8 +91,10 @@
 		<p *ngIf="signupErr" class="center">
 			<mat-error>{{signupErr}}</mat-error>
 		</p>
+
 		<p>
-			<button class="w-100" mat-flat-button color="primary" [disabled]="((signupForm.invalid) || (signUpData.password !== signUpData.cnPassword) || !pwdRegex.test(signUpData.password) || userExists) ? true :false" (click)="signUp()">Signup</button>
+			<button class="w-100" mat-flat-button color="primary" [disabled]="((signupForm.invalid) || (signUpData.password !== signUpData.cnPassword) || !pwdRegex.test(signUpData.password)) ? true :false" (click)="signUp()">Signup</button>
+
 		</p>
 		<p>
 			<span>Already have an account? <a href="javascript:void(0)"(click)="toggleForm()">Login here</a></span>
