@@ -1,0 +1,17 @@
+<div>
+  <mat-form-field class="range">
+    <mat-label>Select Range</mat-label>
+        <mat-select [ngModel]="selectedRange" (ngModelChange)="selectRange($event)">
+          <mat-option value="3">3</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="10">10</mat-option>
+        </mat-select>
+    </mat-form-field>
+  <canvas baseChart
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+</div>
