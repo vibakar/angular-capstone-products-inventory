@@ -16,3 +16,13 @@
 	margin-right: 10px;
 	width: 250px;
 }
+.acc-EditIcon{
+float: right;
+}
+.acc-cancel{
+	margin-left: 10px;
+}
+.field-center{
+	margin:0 auto;
+	width: 300px;
+}
