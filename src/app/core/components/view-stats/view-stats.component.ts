@@ -47,8 +47,10 @@ export class ViewStatsComponent implements OnInit {
 
   sortAndMapProducts() {
 	for (var productId in this.user.views) {
-		let prodDetail = this.products.find((product) => product.id == parseInt(productId));
+    let prodDetail = this.products.find((product) => product.id == parseInt(productId));
+    if(prodDetail) {
 	    this.sortedProducts.push([prodDetail.name, this.user.views[productId]]);
+    }
 	}
     this.sortedProducts.sort(function(a, b) {
 	    return b[1] - a[1];

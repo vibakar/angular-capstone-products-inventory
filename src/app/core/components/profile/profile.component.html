@@ -104,7 +104,7 @@
           </mat-error>
         </p>
           
-        <button  *ngIf="!changeBtn" class="changePwdBtn" mat-flat-button color="primary" (click)="updatePassword()">Submit</button>
+        <button  *ngIf="!changeBtn" class="changePwdBtn" mat-flat-button color="primary" [disabled]="(passwordForm.invalid || password.currentPassword != user.password || password.currentPassword == password.newPassword || password.newPassword != password.cnPassword ) ? true :false" (click)="updatePassword()">Submit</button>
       </form>
     </div>    
   </mat-expansion-panel>
