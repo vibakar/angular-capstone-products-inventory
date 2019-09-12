@@ -1,0 +1,17 @@
+.card-top-spacing{
+margin-top: 30px
+}
+.card-spac{
+    margin-bottom: 15px
+}
+.card-content-font{
+    font-size: 13px;
+    color: gray;
+}
+.about {
+    width: 80%;
+    margin: 0 auto;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}

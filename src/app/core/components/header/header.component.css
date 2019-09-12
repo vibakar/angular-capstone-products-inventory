@@ -8,3 +8,10 @@ mat-toolbar a {
 .dropdown {
 	cursor: pointer;
 }
+.nav-spacing{
+	margin-right: 30px;
+}
+.active {
+	background-color: #5f9ea0;
+	padding: 16px;
+}

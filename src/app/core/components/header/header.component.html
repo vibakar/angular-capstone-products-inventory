@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <span><a [routerLink]="['/']">Products Inventory</a></span>
   <span class="spacer"></span>
+  <span class="nav-spacing" routerLinkActive="active"><a [routerLink]="['/about']">About</a></span>
   <span *ngIf="!isLoggedIn"><a href="javascript:void(0)" (click)="openLoginDialog()">Login</a></span>
   <span class="dropdown" *ngIf="isLoggedIn" [matMenuTriggerFor]="menu">
 	{{userName}} <i class="fa fa-caret-down" aria-hidden="true"></i>
@@ -13,4 +14,5 @@
 	   <span>Logout</span>
 	</button>
   </mat-menu>
+  
 </mat-toolbar>
