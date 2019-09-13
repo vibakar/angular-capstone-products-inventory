@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, NoPreloading } from '@angular/router';
 import { ProfileComponent } from './core/components/profile/profile.component';
+import { AboutComponent } from './core/components/about/about.component';
 import { AppGuard } from './app.guard';
 
 const routes: Routes = [{
@@ -10,6 +11,9 @@ const routes: Routes = [{
 	path: 'profile',
 	component: ProfileComponent,
 	canActivate: [ AppGuard ]
+},{
+	path: 'about',
+	component: AboutComponent
 },{
 	path: "**",
 	redirectTo: "/",
