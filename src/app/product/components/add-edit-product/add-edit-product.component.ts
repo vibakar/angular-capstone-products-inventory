@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from "ngx-spinner";
-import { NgForm } from "@angular/forms";
 
 import { ProductsService } from '../../services/products.service'
 import { Product } from '../../models/Product';
@@ -19,14 +18,15 @@ export class AddEditProductComponent implements OnInit {
   @ViewChild('productForm', {static: false}) productForm;
   product:Product = {
     "name": "",
-    "category": "",
+    "category": "Electronics",
     "manufacturer": "",
     "price": null,
     "quantity": null,
     "description": "",
     "image": ""
   }
-  
+  availableCategories = ["Electronics", "Fashion", "Furniture"];
+
   ngOnInit() {
     this.productId = this.route.snapshot.paramMap.get('id');
     if(this.productId){
@@ -36,13 +36,13 @@ export class AddEditProductComponent implements OnInit {
 
   @HostListener('window:beforeunload', ['$event'])
     unloadNotification($event: any) {
-        if (this.hasUnsavedData()) {
-            $event.returnValue = true;
-        }
+      if (this.hasUnsavedData()) {
+          $event.returnValue = true;
+      }
   }
 
   hasUnsavedData = () => {
-    return this.productForm.dirty;
+    return this.productForm.invalid || !this.productForm.submitted;
   }
 
   addProduct = () =>{

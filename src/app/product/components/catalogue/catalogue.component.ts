@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -24,19 +24,21 @@ export class CatalogueComponent implements OnInit {
   productsCopy: Product[] = [];
   filterValue:string;
   selectedCategory:string = "All";
-  selectedFields = new FormControl(['Category', 'Manufacturer', 'Price']);
   categories: any[] = ['All', 'Electronics', 'Fashion', 'Furniture'];
   customizeFields: string[] = ['Category', 'Manufacturer', 'Description', 'Price', 'Quantity'];
   displayedColumns: string[] = ['select', 'name', 'category', 'manufacturer', 'price'];
   dataSource = new MatTableDataSource<Product>(this.products);
   selectedIds:number[] = [];
-
+  FieldsGroup;
   constructor(private productsService: ProductsService, private authService: AuthService, public dialog: MatDialog, private snackBar: MatSnackBar, private spinner: NgxSpinnerService) {
     this.getAllProducts();
   }
 
   ngOnInit() {
     this.setView();
+    this.FieldsGroup = new FormGroup({
+       selectedFields: new FormControl(['Category', 'Manufacturer', 'Price'])
+    });
     this.isLoggedIn = this.authService.isLoggedIn();
     if(this.isLoggedIn) {
       this.displayedColumns.push('edit', 'delete');
@@ -91,7 +93,7 @@ export class CatalogueComponent implements OnInit {
 
   fnSelectedFields = () => {
       let defaultFields = ['select', 'name'];
-      this.selectedFields.value.forEach((field) => {
+      this.FieldsGroup.value.selectedFields.forEach((field) => {
         defaultFields.push(field.charAt(0).toLowerCase()+field.slice(1));
       });
       this.displayedColumns = defaultFields;

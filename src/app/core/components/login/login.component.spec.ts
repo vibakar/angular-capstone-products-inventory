@@ -33,4 +33,16 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show signup form', async(() => {
+    const link = fixture.debugElement.nativeElement.querySelector('.register');
+    link.click();
+    expect(component.isLogin).toBe(false);
+  }));
+
+  it('Password should pass regex test', () => {
+    let password = "Password@123";
+    expect(component.pwdRegex.test(password)).toBe(true);
+  });
+
 });

@@ -21,6 +21,7 @@ describe('CatalogueTableComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CatalogueTableComponent);
     component = fixture.componentInstance;
+    component.dataSource = [];
     fixture.detectChanges();
   });
 

@@ -31,4 +31,8 @@ describe('ViewStatsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('chart type should be "bar"', () => {
+    expect(component.barChartType).toEqual('bar');
+  });
 });

@@ -30,12 +30,12 @@
   
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Mobile Number</mat-label>
-        <input type="number" matInput name="mobileNo" placeholder="Mobile Number" [(ngModel)]="user.mobileNo" [disabled]="isEditProfile" required>
+        <input type="number" matInput name="mobileNo" placeholder="Mobile Number" [(ngModel)]="user.mobileNo" [disabled]="isEditProfile">
       </mat-form-field>
 
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Location</mat-label>
-        <input type="text" matInput name="location" placeholder="Location" minlength="1" maxlength="20" [(ngModel)]="user.location" [disabled]="isEditProfile" required>
+        <input type="text" matInput name="location" placeholder="Location" [(ngModel)]="user.location" [disabled]="isEditProfile">
       </mat-form-field>
 
       <div>

@@ -2,25 +2,22 @@
   <h3 class="title">{{productId ? 'Update Product' : 'Add Product'}}</h3>
   <form class="product-form" #productForm="ngForm">
      <mat-form-field>
-      <input matInput placeholder="Product Name" #name="ngModel" name="name" minlength="2" maxlength="20" [(ngModel)]="product.name" class="form-control" required >
+      <input matInput placeholder="Product Name" #prodName="ngModel" name="name" minlength="2" maxlength="20" [(ngModel)]="product.name" class="form-control" required >
     </mat-form-field>
-    <mat-error *ngIf="name.touched && name.invalid">
-      <span *ngIf="name.errors.required">Name is required</span>
-      <span *ngIf="name.errors.minlength">Name should contain min 2 characters</span>
-      <span *ngIf="name.errors.maxlength">Name cannot exceed 20 characters</span>
+    <mat-error *ngIf="prodName.touched && prodName.invalid">
+      <span *ngIf="prodName.errors.required">Product Name is required</span>
+      <span *ngIf="prodName.errors.minlength">Product Name should contain min 2 characters</span>
+      <span *ngIf="prodName.errors.maxlength">Product Name cannot exceed 20 characters</span>
     </mat-error>
 
     <mat-form-field>
-      <mat-label>Select Category</mat-label>
-        <mat-select [(value)]="category" #categories="ngModel" name="category" [(ngModel)]="product.category" required>
-          <mat-option value="Electronics">Electronics</mat-option>
-          <mat-option value="Fashion">Fashion</mat-option>
-          <mat-option value="Furniture">Furniture</mat-option>
-        </mat-select>
+      <mat-select placeholder="Select Category" [(value)]="product.category" required>
+        <mat-option *ngFor="let category of availableCategories" [value]="category">{{category}}</mat-option>
+      </mat-select>
     </mat-form-field>
-    <mat-error *ngIf="categories.touched && categories.invalid">
-      <span *ngIf="categories.errors.required">Category is required</span>
-    </mat-error>
+   <!--  <mat-error *ngIf="cat.touched && cat.invalid">
+      <span *ngIf="cat.errors.required">Category is required</span>
+    </mat-error> -->
                       
     <mat-form-field>
       <input matInput placeholder="Manufacturer" name="manufacturer" #manufacturer="ngModel" [(ngModel)]="product.manufacturer" required>

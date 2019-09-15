@@ -31,4 +31,8 @@ describe('AddEditProductComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have atleast 2 categories', () => {
+    expect(component.availableCategories.length).toBeGreaterThan(2);
+  });
 });

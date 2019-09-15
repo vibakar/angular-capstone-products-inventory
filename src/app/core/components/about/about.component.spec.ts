@@ -23,4 +23,11 @@ describe('AboutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have as title 'What can you buy?'`, () => {
+    const fixture = TestBed.createComponent(AboutComponent);
+    const about = fixture.debugElement.componentInstance;
+    expect(about.title).toEqual('What can you buy?');
+  });
+
 });
