@@ -1,50 +1,94 @@
 <mat-accordion>
   <mat-expansion-panel  class="acc mt-30" [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Personal Details
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal Details
+      </mat-panel-title>
+    </mat-expansion-panel-header>
 
-      <p class="acc-EditIcon">
-        <button *ngIf="!editBtn" mat-button class="fl" color="accent" [disabled]="editBtn" (click)="editProfile()">
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        </button>
-      </p>
-     
-    <form #profileForm="ngForm">     
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>First Name</mat-label>
-        <input type="text" matInput name="firstName" placeholder="First Name"  minlength="3" maxlength="20" [(ngModel)]="user.firstName" [disabled]="isEditProfile" required>
-      </mat-form-field>
-    
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Last Name</mat-label>
-        <input type="text" matInput name="lname" placeholder="Last Name" minlength="1" maxlength="20" [(ngModel)]="user.lastName" [disabled]="isEditProfile" required>
-      </mat-form-field>
-     
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Email ID</mat-label>
-        <input type="email" matInput name="email"  placeholder="Email Id" [(ngModel)]="user.emailId" disabled required>
-      </mat-form-field>
-  
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Mobile Number</mat-label>
-        <input type="number" matInput name="mobileNo" placeholder="Mobile Number" [(ngModel)]="user.mobileNo" [disabled]="isEditProfile">
-      </mat-form-field>
+    <p class="acc-EditIcon">
+      <button *ngIf="!editBtn" mat-button class="fl" color="accent" [disabled]="editBtn" (click)="editProfile()">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </button>
+    </p>
+       
+    <form #profileForm="ngForm">  
+      <div class="field-inline">
+        <p>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput name="firstName" #fname="ngModel" placeholder="First Name"  minlength="3" maxlength="20" [(ngModel)]="user.firstName" [disabled]="isEditProfile" required>
+          </mat-form-field>
+            
+          <mat-error *ngIf="fname.touched && fname.invalid">
+            <span *ngIf="fname.errors.required">First Name is required</span>
+            <span *ngIf="fname.errors.minlength">First Name should contain min 3 characters</span>
+            <span *ngIf="fname.errors.maxlength">First Name cannot exceed 20 characters</span>
+          </mat-error>
+          </p>
 
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Location</mat-label>
-        <input type="text" matInput name="location" placeholder="Location" [(ngModel)]="user.location" [disabled]="isEditProfile">
-      </mat-form-field>
+          <p>
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input type="text" matInput name="lname" #lname="ngModel" placeholder="Last Name" minlength="1" maxlength="20" [(ngModel)]="user.lastName" [disabled]="isEditProfile" required>
+            </mat-form-field>
+        
+            <mat-error *ngIf="lname.touched && lname.invalid">
+              <span *ngIf="lname.errors.required">Last Name is required</span>
+              <span *ngIf="lname.errors.minlength">Last Name should contain min 1 characters</span>
+              <span *ngIf="lname.errors.maxlength">Last Name cannot exceed 20 characters</span>
+            </mat-error> 
+          </p>
+      </div>   
+      
+      <div class="field-inline">
+        <p>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Email ID</mat-label>
+            <input type="email" matInput name="email" #email="ngModel"  placeholder="Email Id" [(ngModel)]="user.emailId" disabled required>
+          </mat-form-field>
 
+          <mat-error *ngIf="email.touched && email.invalid">
+            <span *ngIf="email.errors.required">Email is required</span>
+          </mat-error>
+        </p>
+        
+        <p>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Mobile Number</mat-label>
+            <input type="number" matInput name="mobileNo" #mob="ngModel" placeholder="Mobile Number" [(ngModel)]="user.mobileNo" minlength="8" maxlength="10"  [disabled]="isEditProfile" required>
+          </mat-form-field> 
+            
+          <mat-error *ngIf="mob.touched && mob.invalid">
+            <span *ngIf="mob.errors.required">Mobile number is required</span>
+            <span *ngIf="mob.errors.minlength">mobile number should contain min 8 digits</span>
+            <span *ngIf="mob.errors.maxlength">mobile number cannot exceed 10 digits</span>
+          </mat-error>
+        </p>
+      </div>
+
+      <div class="field-inline">
+        <p>
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Location</mat-label>
+            <input type="text" matInput name="location" #loc="ngModel" placeholder="Location" minlength="1" maxlength="20" [(ngModel)]="user.location" [disabled]="isEditProfile" required>
+          </mat-form-field>
+
+          <mat-error *ngIf="loc.touched && loc.invalid">
+            <span *ngIf="loc.errors.required">Location is required</span>
+            <span *ngIf="loc.errors.minlength">Location should contain minimum 1 character</span>
+            <span *ngIf="loc.errors.minlength">Location should not exceed 20 character</span>
+          </mat-error>
+        </p>
+      </div>
+      
       <div>
-        <button *ngIf="editBtn" mat-flat-button color="primary" (click)="editProfileDone()">Sumbit</button>
+        <button *ngIf="editBtn" mat-flat-button color="primary" [disabled]="profileForm.invalid ? true :false" (click)="editProfileDone()">Sumbit</button>
         <button *ngIf="editBtn" mat-flat-button color="accent" class="acc-cancel" (click)="cancel()">Cancel</button>
       </div>  
     </form>
   </mat-expansion-panel>
-
+  
   <mat-expansion-panel  class="acc mt-30" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -60,6 +104,7 @@
       Change Password
       </mat-panel-title>
     </mat-expansion-panel-header>
+
     <div class="field-center">
       <form #passwordForm="ngForm" class="profile-acc">
         <p>
@@ -87,7 +132,7 @@
             <span>Password should contain ateast 8 charcters with 1 uppercase, 1 lowercase, 1 digit and 1 special character</span>
           </mat-error>
           <mat-error *ngIf="(user.password == password.newPassword)">
-             <span>New password should not be same as Current password</span>
+              <span>New password should not be same as Current password</span>
           </mat-error>
         </p>
 

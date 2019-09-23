@@ -29,3 +29,6 @@
 	margin:0 auto;
 	width: 300px;
 }
+.field-inline{
+	display: flex;
+}
