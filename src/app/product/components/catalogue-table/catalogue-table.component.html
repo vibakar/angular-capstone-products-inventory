@@ -33,7 +33,8 @@
 
   <ng-container matColumnDef="description">
     <th mat-header-cell *matHeaderCellDef> Description </th>
-    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    <td mat-cell *matCellDef="let element">
+      <span class="desc">{{element.description}} </span> </td>
   </ng-container>
 
   <ng-container matColumnDef="price">

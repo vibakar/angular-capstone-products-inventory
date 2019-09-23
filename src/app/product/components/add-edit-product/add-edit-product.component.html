@@ -11,13 +11,13 @@
     </mat-error>
 
     <mat-form-field>
-      <mat-select placeholder="Select Category" [(value)]="product.category" required>
+      <mat-select placeholder="Select Category" [(value)]="product.category" [(ngModel)]="product.category" name="cat" #cat="ngModel" required>
         <mat-option *ngFor="let category of availableCategories" [value]="category">{{category}}</mat-option>
       </mat-select>
     </mat-form-field>
-   <!--  <mat-error *ngIf="cat.touched && cat.invalid">
+    <mat-error *ngIf="cat.touched && cat.invalid">
       <span *ngIf="cat.errors.required">Category is required</span>
-    </mat-error> -->
+    </mat-error>
                       
     <mat-form-field>
       <input matInput placeholder="Manufacturer" name="manufacturer" #manufacturer="ngModel" [(ngModel)]="product.manufacturer" required>

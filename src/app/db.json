@@ -69,16 +69,6 @@
       "description": "Newly launched device which has curved display with 6.67 inches and also with 8GB RAM and 128GB ROM.\nIt has triple camera at the back side.",
       "image": "https://cdn.hiptoro.com/wp-content/uploads/2019/05/OnePlus-7-Pro-specs-price-buy.jpg",
       "id": 7
-    },
-    {
-      "name": "qww",
-      "category": "",
-      "manufacturer": "qqqq",
-      "price": 1,
-      "quantity": 1,
-      "description": "",
-      "image": "q",
-      "id": 8
     }
   ],
   "users": [
@@ -90,7 +80,7 @@
       "location": "",
       "mobileNo": 7639228797,
       "views": {
-        "1": 7,
+        "1": 9,
         "2": 2,
         "3": 3,
         "4": 4

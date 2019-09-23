@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let user = this.allUsers.find((user: User) => (user.emailId == this.loginData.emailId && user.password == this.loginData.password));
+    let user = this.allUsers.find((user: User) => ((user.emailId == this.loginData.emailId) && (user.password == this.loginData.password)));
     if(user) {
       sessionStorage.setItem("userId", user.id.toString());
       sessionStorage.setItem("name", user.firstName);

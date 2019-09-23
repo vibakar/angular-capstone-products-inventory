@@ -18,7 +18,7 @@ export class AddEditProductComponent implements OnInit {
   @ViewChild('productForm', {static: false}) productForm;
   product:Product = {
     "name": "",
-    "category": "Electronics",
+    "category": "",
     "manufacturer": "",
     "price": null,
     "quantity": null,
@@ -42,7 +42,8 @@ export class AddEditProductComponent implements OnInit {
   }
 
   hasUnsavedData = () => {
-    return this.productForm.invalid || !this.productForm.submitted;
+  console.log(this.productForm.touched)
+    return (this.productForm.touched && this.productForm.invalid) || (this.productForm.touched && !this.productForm.submitted);
   }
 
   addProduct = () =>{
