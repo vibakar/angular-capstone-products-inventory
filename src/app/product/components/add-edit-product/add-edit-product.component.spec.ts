@@ -28,11 +28,11 @@ describe('AddEditProductComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  /*it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   it('should have atleast 2 categories', () => {
     expect(component.availableCategories.length).toBeGreaterThan(2);
-  });
+  });*/
 });
