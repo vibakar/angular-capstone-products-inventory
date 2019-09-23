@@ -56,13 +56,14 @@
         <p>
           <mat-form-field class="w-100" appearance="outline">
             <mat-label>Mobile Number</mat-label>
-            <input type="number" matInput name="mobileNo" #mob="ngModel" placeholder="Mobile Number" [(ngModel)]="user.mobileNo" minlength="8" maxlength="10"  [disabled]="isEditProfile" required>
+            <input type="number" matInput name="mobileNo" #mob="ngModel" placeholder="Mobile Number" [(ngModel)]="user.mobileNo" [disabled]="isEditProfile" required>
           </mat-form-field> 
             
           <mat-error *ngIf="mob.touched && mob.invalid">
-            <span *ngIf="mob.errors.required">Mobile number is required</span>
-            <span *ngIf="mob.errors.minlength">mobile number should contain min 8 digits</span>
-            <span *ngIf="mob.errors.maxlength">mobile number cannot exceed 10 digits</span>
+            <span *ngIf="mob.errors.required">Mobile Number is required</span>
+          </mat-error>
+          <mat-error *ngIf="user.mobileNo.toString().length != 10">
+            <span>Mobile Number is not valid</span>
           </mat-error>
         </p>
       </div>
@@ -71,19 +72,19 @@
         <p>
           <mat-form-field class="w-100" appearance="outline">
             <mat-label>Location</mat-label>
-            <input type="text" matInput name="location" #loc="ngModel" placeholder="Location" minlength="1" maxlength="20" [(ngModel)]="user.location" [disabled]="isEditProfile" required>
+            <input type="text" matInput name="location" #loc="ngModel" placeholder="Location" minlength="2" maxlength="20" [(ngModel)]="user.location" [disabled]="isEditProfile" required>
           </mat-form-field>
 
           <mat-error *ngIf="loc.touched && loc.invalid">
             <span *ngIf="loc.errors.required">Location is required</span>
-            <span *ngIf="loc.errors.minlength">Location should contain minimum 1 character</span>
-            <span *ngIf="loc.errors.minlength">Location should not exceed 20 character</span>
+            <span *ngIf="loc.errors.minlength">Location should contain minimum 2 characters</span>
+            <span *ngIf="loc.errors.maxlength">Location should not exceed 20 characters</span>
           </mat-error>
         </p>
       </div>
       
       <div>
-        <button *ngIf="editBtn" mat-flat-button color="primary" [disabled]="profileForm.invalid ? true :false" (click)="editProfileDone()">Sumbit</button>
+        <button *ngIf="editBtn" mat-flat-button color="primary" [disabled]="(profileForm.invalid || user.mobileNo.toString().length != 10) ? true :false" (click)="editProfileDone()">Sumbit</button>
         <button *ngIf="editBtn" mat-flat-button color="accent" class="acc-cancel" (click)="cancel()">Cancel</button>
       </div>  
     </form>

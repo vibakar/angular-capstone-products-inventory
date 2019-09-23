@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
   editProfileDone = () => {
     if(this.editBtn){
       this.coreService.updateUser(this.user).subscribe(()=>{
-        this.snackBar.open(`profile updated sucessfully!`, 'Ok',{duration: 3000});
+        this.snackBar.open(`Profile updated sucessfully!`, 'Ok',{duration: 3000});
         this.cancel();
         sessionStorage.removeItem('name');
         sessionStorage.setItem("name", this.user.firstName);
@@ -86,7 +86,7 @@ export class ProfileComponent implements OnInit {
   }
 
   cancel = () => {
-    this.isEditProfile = true;
-    this.editBtn = false;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+        this.router.navigate(["/profile"]));
   }
 }
