@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from "ngx-spinner";
-import { NgForm } from "@angular/forms";
 
 import { ProductsService } from '../../services/products.service'
 import { Product } from '../../models/Product';
@@ -26,7 +25,8 @@ export class AddEditProductComponent implements OnInit {
     "description": "",
     "image": ""
   }
-  
+  availableCategories = ["Electronics", "Fashion", "Furniture"];
+
   ngOnInit() {
     this.productId = this.route.snapshot.paramMap.get('id');
     if(this.productId){
@@ -36,13 +36,14 @@ export class AddEditProductComponent implements OnInit {
 
   @HostListener('window:beforeunload', ['$event'])
     unloadNotification($event: any) {
-        if (this.hasUnsavedData()) {
-            $event.returnValue = true;
-        }
+      if (this.hasUnsavedData()) {
+          $event.returnValue = true;
+      }
   }
 
   hasUnsavedData = () => {
-    return this.productForm.dirty;
+  console.log(this.productForm.touched)
+    return (this.productForm.touched && this.productForm.invalid) || (this.productForm.touched && !this.productForm.submitted);
   }
 
   addProduct = () =>{

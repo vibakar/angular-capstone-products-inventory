@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
   userId:string;
   step = 0;
   ngOnInit() {
-    this.userId= sessionStorage.getItem('userId')
+    this.userId = sessionStorage.getItem('userId');
     if(this.userId){
       this.getUserDetail();
     }
@@ -52,7 +52,7 @@ export class ProfileComponent implements OnInit {
     this.editBtn = true;
   }
 
-  editProfileDone = () =>{
+  editProfileDone = () => {
     if(this.editBtn){
       this.coreService.updateUser(this.user).subscribe(()=>{
         this.snackBar.open(`profile updated sucessfully!`, 'Ok',{duration: 3000});
@@ -60,7 +60,7 @@ export class ProfileComponent implements OnInit {
         sessionStorage.removeItem('name');
         sessionStorage.setItem("name", this.user.firstName);
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-        this.router.navigate(["/profile"])); 
+        this.router.navigate(["/profile"]));
       }, (err) => {
         this.snackBar.open(`Failed to update profile, try again later`, 'Ok',{duration: 3000});
       });
@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
     this.step = index;
   }
 
-  updatePassword =() =>{
+  updatePassword = () => {
     if(this.password.cnPassword.length>0){
       this.user.password=this.password.cnPassword;
       this.coreService.updateUser(this.user).subscribe(()=>{
@@ -83,10 +83,9 @@ export class ProfileComponent implements OnInit {
         this.snackBar.open(`Failed to change password, try again later`, 'Ok',{duration: 3000});
       })
     }
-    
   }
 
-  cancel = () =>{
+  cancel = () => {
     this.isEditProfile = true;
     this.editBtn = false;
   }

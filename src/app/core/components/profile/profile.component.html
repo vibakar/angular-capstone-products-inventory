@@ -59,7 +59,7 @@
             <input type="number" matInput name="mobileNo" #mob="ngModel" placeholder="Mobile Number" [(ngModel)]="user.mobileNo" minlength="8" maxlength="10"  [disabled]="isEditProfile" required>
           </mat-form-field> 
             
-          <mat-error *ngIf="mob.touched && loc.invalid">
+          <mat-error *ngIf="mob.touched && mob.invalid">
             <span *ngIf="mob.errors.required">Mobile number is required</span>
             <span *ngIf="mob.errors.minlength">mobile number should contain min 8 digits</span>
             <span *ngIf="mob.errors.maxlength">mobile number cannot exceed 10 digits</span>
@@ -104,7 +104,7 @@
       Change Password
       </mat-panel-title>
     </mat-expansion-panel-header>
-    
+
     <div class="field-center">
       <form #passwordForm="ngForm" class="profile-acc">
         <p>
