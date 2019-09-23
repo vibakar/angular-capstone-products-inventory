@@ -17,7 +17,10 @@
 	width: 250px;
 }
 .acc-EditIcon{
-float: right;
+	float: right;
+	padding: 0px;
+    margin: 0px;
+    margin-top: -12px;
 }
 .acc-cancel{
 	margin-left: 10px;
