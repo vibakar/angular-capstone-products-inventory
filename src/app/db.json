@@ -160,7 +160,7 @@
       "location": "",
       "mobileNo": 7639228797,
       "views": {
-        "1": 15,
+        "1": 16,
         "2": 4,
         "3": 3,
         "4": 4,
@@ -222,6 +222,19 @@
         "7": 1
       },
       "id": 5
+    },
+    {
+      "firstName": "Test",
+      "lastName": "T",
+      "emailId": "test@gmail.com",
+      "password": "Tester@123",
+      "location": "",
+      "mobileNo": "",
+      "views": {
+        "2": 1,
+        "5": 1
+      },
+      "id": 6
     }
   ]
 }

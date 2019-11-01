@@ -12,10 +12,14 @@ import { LoginComponent } from '../login/login.component';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn:boolean = false;
+  userName:string;
   constructor(private router: Router, private coreService: CoreService, private dialog: MatDialog) { }
 
   ngOnInit() {
   	this.isLoggedIn = this.coreService.isLoggedIn();
+    if(this.isLoggedIn) {
+      this.userName = sessionStorage.getItem('userName');
+    }
   }
 
   goToProfile() {
@@ -28,6 +32,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('userName');
     if(window.location.pathname == '/') {
       window.location.reload();
     } else {

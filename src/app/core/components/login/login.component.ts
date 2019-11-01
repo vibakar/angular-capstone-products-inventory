@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     let user = this.allUsers.find((user: User) => ((user.emailId == this.loginData.emailId) && (user.password == this.loginData.password)));
     if(user) {
       sessionStorage.setItem("userId", user.id.toString());
+      sessionStorage.setItem("userName", user.firstName);
       this.dialogRef.close();
       window.location.reload();
     } else {
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
     delete obj['cnPassword'];
     this.coreService.addUser(obj).subscribe((data: User)=> {
       sessionStorage.setItem("userId", data.id.toString());
+      sessionStorage.setItem("userName", data.firstName);
       this.dialogRef.close();
       window.location.reload();
     }, (err) => {

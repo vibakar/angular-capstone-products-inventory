@@ -15,7 +15,6 @@ mat-toolbar a {
 	background-color: #5f9ea0;
 	padding: 16px;
 }
-.fa-user {
-	font-size: 24px;
+.userName {
 	padding-right: 5px;
 }

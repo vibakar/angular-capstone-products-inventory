@@ -62,7 +62,7 @@
           <mat-error *ngIf="mob.touched && mob.invalid">
             <span *ngIf="mob.errors.required">Mobile Number is required</span>
           </mat-error>
-          <mat-error *ngIf="user.mobileNo.toString().length != 10">
+          <mat-error *ngIf="user.mobileNo && user.mobileNo.toString().length != 10">
             <span>Mobile Number is not valid</span>
           </mat-error>
         </p>
