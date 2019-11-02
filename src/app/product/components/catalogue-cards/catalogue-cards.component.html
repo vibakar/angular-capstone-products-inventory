@@ -1,4 +1,4 @@
-<mat-grid-list cols="3">
+<mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)">
   <mat-grid-tile *ngFor="let product of products">
     <div>
     <mat-card class="product-card">

@@ -42,7 +42,6 @@ export class AddEditProductComponent implements OnInit {
   }
 
   hasUnsavedData = () => {
-  console.log(this.productForm.touched)
     return (this.productForm.touched && this.productForm.invalid) || (this.productForm.touched && !this.productForm.submitted);
   }
 
